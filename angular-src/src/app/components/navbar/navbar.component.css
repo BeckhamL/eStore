@@ -1,0 +1,8 @@
+.nav_links {
+  float: right;
+}
+
+.nav_links a {
+  text-decoration: none;
+  color: white;
+}
