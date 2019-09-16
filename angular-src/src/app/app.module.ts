@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MatToolbarModule, MatMenuModule, MatGridListModule, MatButtonModule, MatFormFieldModule, MatCardModule, MatInputModule, MatInput } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpModule } from '@angular/http';
 
 // Components
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 // Services
 import { ValidateService } from './services/validate.service';
+import { AuthService } from './services/auth.service';
 
 // Misc
 import { FlashMessagesModule } from 'angular2-flash-messages';
@@ -40,6 +42,7 @@ const appRoutes: Routes = [
     ProfileComponent
   ],
   imports: [
+    HttpModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
@@ -54,7 +57,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [ValidateService],
+  providers: [ValidateService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
