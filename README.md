@@ -10,6 +10,7 @@ To run the front-end
 cd angular-src
 ng serve
 ```
+To run mongodb
 ```
 mongod
 mongo
