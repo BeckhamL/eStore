@@ -15,6 +15,7 @@ To run mongodb
 mongod
 mongo
 ```
+To run node server
 ```
 node app.js
 ```
