@@ -5,19 +5,7 @@ This application uses the MEAN stack
 Styling is done through Angular Material
 
 ## To run this application
-To run the front-end
 ```
-cd angular-src
-ng serve
+ng build
 ```
-<br>
-To run mongodb
-```
-mongod
-mongo
-```
-<br>
-To run node server
-```
-node app.js
-```
+Website will run on ```localhost:3000```

@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.authenticateUser(user).subscribe(data => {
       if(data.success) {
+        console.log(this.authService.loggedIn());
         this.authService.storeUserDate(data.token, data.user);
         this.router.navigate(["/dashboard"]);
       }
