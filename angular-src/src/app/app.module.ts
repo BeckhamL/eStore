@@ -2,7 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { MatToolbarModule, MatMenuModule, MatGridListModule, MatButtonModule, MatFormFieldModule, MatCardModule, MatInputModule, MatInput } from '@angular/material';
+import { 
+  MatToolbarModule, 
+  MatMenuModule, 
+  MatGridListModule, 
+  MatButtonModule, 
+  MatFormFieldModule, 
+  MatCardModule, 
+  MatInputModule,
+  MatOptionModule,
+  MatSelectModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
@@ -57,6 +66,8 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
     BrowserAnimationsModule,
     FlashMessagesModule.forRoot()
   ],

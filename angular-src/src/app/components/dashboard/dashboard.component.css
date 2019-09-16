@@ -1,0 +1,15 @@
+mat-grid-tile {
+  padding: 5px;
+}
+
+mat-grid-tile:hover {
+  cursor: pointer;
+}
+
+mat-grild-tile-header {
+  text-align: center;
+}
+
+#dashboard_button {
+  margin-top: 10px;
+}

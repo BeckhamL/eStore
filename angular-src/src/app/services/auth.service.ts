@@ -46,15 +46,6 @@ export class AuthService {
     return tokenNotExpired("id_token");
   }
 
-  // loggedIn(): boolean {
-  //   if(localStorage.getItem("id_token") == null) {
-  //     return true;
-  //   }
-  //   else {
-  //     return false;
-  //   }
-  //}
-
   storeUserDate(token: string, user:User ) {
 
     // Store the user locally

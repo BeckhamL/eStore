@@ -1,1 +1,27 @@
-<p>dashboard works!</p>
+<h1>My postings</h1>
+<input class="form-control" type="text" placeholder="Search your postings">
+<button type="button" class="btn btn-success btn-lg" id="dashboard_button">SEARCH</button>
+
+<mat-grid-list cols="3" rowHeight="548px" gutterSize="10px" >
+  <mat-grid-tile *ngFor="let item of items">
+    <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{ item.itemName }}</mat-card-title>
+          <mat-card-title>${{ item.itemCost }}</mat-card-title>
+          <mat-card-subtitle>Category: {{ item.itemCategory }}</mat-card-subtitle>
+        </mat-card-header>
+        <div *ngIf="item.itemImage == null; else null"></div>
+        <img mat-card-image src={{item.itemImage}}>
+        <mat-card-content>
+          <p>
+            {{item.itemDescription}}
+          </p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-raised-button color="accent">MESSAGE</button>
+          <button mat-raised-button color="primary">ADD TO CART</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
