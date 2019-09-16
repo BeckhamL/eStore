@@ -1,20 +1,20 @@
 <form style="margin-top:30px;"> 
     <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
-        <input type="text" [(ngModel)]="name" name="name" class="form-control">
+        <input type="text" [(ngModel)]="name" name="name" class="form-control" autocomplete="off">
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Username</label>
-        <input type="email" [(ngModel)]="username" name="username" class="form-control">
+        <input type="email" [(ngModel)]="username" name="username" class="form-control" autocomplete="off">
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
-      <input type="email" [(ngModel)]="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+      <input type="email" [(ngModel)]="email" name="email" class="form-control" id="exampleInputEmail1" autocomplete="off">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input type="password" [(ngModel)]="password" name="password" class="form-control" placeholder="Password">
+      <input type="password" [(ngModel)]="password" name="password" class="form-control">
     </div>
 </form>
 
