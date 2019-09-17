@@ -1,6 +1,6 @@
 <h1>My postings</h1>
-<input class="form-control" type="text" placeholder="Search your postings">
-<button type="button" class="btn btn-success btn-lg" id="dashboard_button">SEARCH</button>
+<input class="form-control" type="text" placeholder="Search your postings" [(ngModel)]="search" name="search">
+<button type="button" class="btn btn-success btn-lg" id="dashboard_button" (click)="onSearchButton()">SEARCH</button>
 
 <mat-grid-list cols="3" rowHeight="548px" gutterSize="10px" >
   <mat-grid-tile *ngFor="let item of items">
@@ -19,8 +19,8 @@
         </mat-card-content>
 
         <mat-card-actions>
-          <button mat-raised-button color="accent">MESSAGE</button>
-          <button mat-raised-button color="primary">ADD TO CART</button>
+          <button mat-raised-button color="accent">EDIT</button>
+          <button mat-raised-button color="primary">REMOVE</button>
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>

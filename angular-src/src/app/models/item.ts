@@ -8,6 +8,5 @@ export interface Item {
   itemOwner: User;
   itemDate: Date;
   itemDescription: string;
-  itemSale: boolean;
   itemCategory: Category;
 }

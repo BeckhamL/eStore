@@ -11,7 +11,8 @@ import {
   MatCardModule, 
   MatInputModule,
   MatOptionModule,
-  MatSelectModule } from '@angular/material';
+  MatSelectModule,
+  MatSlideToggleModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
@@ -24,6 +25,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { NewPostingComponent } from './components/new-posting/new-posting.component';
 
 // Services
 import { ValidateService } from './services/validate.service';
@@ -35,12 +37,14 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 // Guards
 import { AuthGuard } from './guards/auth.guard';
 
+
 const appRoutes: Routes = [
   {path:"", component: HomeComponent},
   {path:"register", component: RegisterComponent},
   {path:"login", component: LoginComponent},
   {path:"dashboard", component: DashboardComponent, canActivate: [AuthGuard]},
   {path:"profile", component: ProfileComponent, canActivate: [AuthGuard]},
+  {path:"newPosting", component: NewPostingComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -51,7 +55,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     HomeComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    NewPostingComponent
   ],
   imports: [
     HttpModule,
@@ -68,6 +73,7 @@ const appRoutes: Routes = [
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
+    MatSlideToggleModule,
     BrowserAnimationsModule,
     FlashMessagesModule.forRoot()
   ],

@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
 
   loggedUser: User = JSON.parse(localStorage.getItem("user"));
   categories: Category;
+  search: string;
   
   items: Item[] = [{
     itemName :"keys",
@@ -20,7 +21,6 @@ export class DashboardComponent implements OnInit {
     itemOwner: this.loggedUser,
     itemDate: new Date(),
     itemDescription: "this is my dog",
-    itemSale: false,
     itemCategory: Category.Cooking
 
   },
@@ -31,7 +31,6 @@ export class DashboardComponent implements OnInit {
     itemOwner: this.loggedUser,
     itemDate: new Date(),
     itemDescription: "great for outdoor use",
-    itemSale: false,
     itemCategory: Category.Cooking
 
   },
@@ -42,7 +41,6 @@ export class DashboardComponent implements OnInit {
     itemOwner: this.loggedUser,
     itemDate: new Date(),
     itemDescription: "this is my dog",
-    itemSale: false,
     itemCategory: Category.Sports
 
   },
@@ -53,7 +51,6 @@ export class DashboardComponent implements OnInit {
     itemOwner: this.loggedUser,
     itemDate: new Date(),
     itemDescription: "swag",
-    itemSale: false,
     itemCategory: Category.Misc
 
   },
@@ -64,7 +61,6 @@ export class DashboardComponent implements OnInit {
     itemOwner: this.loggedUser,
     itemDate: new Date(),
     itemDescription: "this is my dog",
-    itemSale: false,
     itemCategory: Category.AutoMobiles
 
   }];
@@ -76,6 +72,10 @@ export class DashboardComponent implements OnInit {
 
   onItemClick() {
     console.log("clicked item ");
+  }
+
+  onSearchButton() {
+    console.log(this.search);
   }
 
 }
