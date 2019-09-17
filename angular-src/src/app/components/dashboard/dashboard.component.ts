@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
     itemName :"keys",
     itemImage: "https://material.angular.io/assets/img/examples/shiba2.jpg",
     itemCost: 12,
-    itemOwner: this.loggedUser,
+    itemOwner: this.loggedUser.email,
     itemDate: new Date(),
     itemDescription: "this is my dog",
     itemCategory: Category.Cooking
@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
     itemName :"jambolayah",
     itemImage: "https://material.angular.io/assets/img/examples/shiba2.jpg",
     itemCost: 12,
-    itemOwner: this.loggedUser,
+    itemOwner: this.loggedUser.email,
     itemDate: new Date(),
     itemDescription: "great for outdoor use",
     itemCategory: Category.Cooking
@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
     itemName :"keys",
     itemImage: "https://material.angular.io/assets/img/examples/shiba2.jpg",
     itemCost: 12,
-    itemOwner: this.loggedUser,
+    itemOwner: this.loggedUser.email,
     itemDate: new Date(),
     itemDescription: "this is my dog",
     itemCategory: Category.Sports
@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
     itemName :"keys",
     itemImage: "https://material.angular.io/assets/img/examples/shiba2.jpg",
     itemCost: 24,
-    itemOwner: this.loggedUser,
+    itemOwner: this.loggedUser.email,
     itemDate: new Date(),
     itemDescription: "swag",
     itemCategory: Category.Misc
@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
     itemName :"keys",
     itemImage: "https://material.angular.io/assets/img/examples/shiba2.jpg",
     itemCost: 613,
-    itemOwner: this.loggedUser,
+    itemOwner: this.loggedUser.email,
     itemDate: new Date(),
     itemDescription: "this is my dog",
     itemCategory: Category.AutoMobiles

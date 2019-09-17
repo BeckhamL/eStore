@@ -5,7 +5,7 @@ export interface Item {
   itemName: string;
   itemImage: string;
   itemCost: number;
-  itemOwner: User;
+  itemOwner: string;
   itemDate: Date;
   itemDescription: string;
   itemCategory: Category;

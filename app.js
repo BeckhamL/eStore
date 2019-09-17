@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 
 // Use other JS files
 const users = require("./routes/users")
+const posts = require("./routes/posts");
 const config = require("./config/database");
 
 // Connecting to database
@@ -30,6 +31,8 @@ app.use(passport.session());
 require("./config/passport")(passport);
 
 app.use("/users", users);
+
+app.use("/posts", posts);
 
 app.get("/", function(req,res) {
   res.send("invalid");

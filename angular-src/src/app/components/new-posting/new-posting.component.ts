@@ -5,6 +5,7 @@ import { Category } from '../../models/category';
 import { ValidateService } from '../../services/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-new-posting',
@@ -23,6 +24,7 @@ export class NewPostingComponent implements OnInit {
 
   constructor(
     private validateService: ValidateService,
+    private postService: PostService,
     private flashMessages: FlashMessagesService,
     private router: Router)
      { }
@@ -39,17 +41,25 @@ export class NewPostingComponent implements OnInit {
       itemImage: this.itemImage,
       itemDate: new Date(),
       itemCategory: Category.AutoMobiles,
-      itemOwner: this.loggedUser
+      itemOwner: this.loggedUser.email
     }
 
-    if(this.validateService.validateNewPost(item)) {
-      this.flashMessages.show("Successfully created a new post", {cssClass: 'alert-success', timeout: 3000});
-      this.router.navigate(["/dashboard"]);
-    }
-    else {
+    if (!this.validateService.validateNewPost(item)) {
       this.flashMessages.show("Missing fields", {cssClass: 'alert-danger', timeout: 3000});
-      this.router.navigate(["/newPost"]);
+      this.router.navigate(["/newPosting"]);
     }
+
+    this.postService.createPosting(item).subscribe(data => {
+      if(data.success) {
+        this.flashMessages.show("Successfully created a new post", {cssClass: 'alert-success', timeout: 3000});
+        this.router.navigate(["/dashboard"]);
+      }
+      else {
+        //this.flashMessages.show(data, {cssClass: 'alert-danger', timeout: 3000});
+        console.log(data);
+        this.router.navigate(["/newPosting"]);
+      }
+    });
   }
 
 }
