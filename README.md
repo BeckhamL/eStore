@@ -13,6 +13,5 @@ Website will run on ```localhost:3000```
 # TODO
 
 1. Add route to my cart (use angular material for notifs)
-2. Create different users (admin, user)
-3. Filter postings by categories
-4. Make create postings page for admin
+2. Filter postings by categories
+3. make edit page

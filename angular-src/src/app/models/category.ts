@@ -4,5 +4,5 @@ export enum Category {
   AutoMobiles = "Auto-mobiles",
   Sports = "Sports",
   Gardening = "Gardening",
-  CLothing = "Clothing"
+  Clothing = "Clothing"
 }

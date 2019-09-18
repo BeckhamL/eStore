@@ -31,8 +31,35 @@ router.post("/newPosting", function(req, res) {
 });
 
 router.get("/dashboard", function(req, res) {
-  res.send({
-    item: req
+  Item.find({}, function(err, items) {
+    if(err) {
+      res.json({
+        success: false,
+        msg: err
+      })
+    }
+    else {
+      res.json(items);
+    }
+  });
+});
+
+router.delete("/dashboard", function(req, res) {
+  let id = req.param('id');
+
+  Item.deleteOne({"_id": id}, function(err, item) {
+    if(err) {
+      res.json({
+        success: false,
+        msg: err
+      })
+    }
+    else {
+      res.json({
+        success: true,
+        msg: "Successfully deleted"
+      })
+    }
   });
 });
 

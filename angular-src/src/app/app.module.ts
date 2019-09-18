@@ -12,7 +12,13 @@ import {
   MatInputModule,
   MatOptionModule,
   MatSelectModule,
-  MatSlideToggleModule } from '@angular/material';
+  MatSlideToggleModule,
+  MatExpansionModule,
+  MatSnackBarModule,
+  MatSliderModule,
+  MatNativeDateModule,
+  MatDatepickerModule
+ } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
@@ -26,6 +32,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NewPostingComponent } from './components/new-posting/new-posting.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
 
 // Services
 import { ValidateService } from './services/validate.service';
@@ -36,7 +43,8 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 
 // Guards
 import { AuthGuard } from './guards/auth.guard';
-
+import { SearchFilterComponent } from './components/search-filter/search-filter.component';
+import { DatePipe } from '@angular/common';
 
 const appRoutes: Routes = [
   {path:"", component: HomeComponent},
@@ -44,7 +52,8 @@ const appRoutes: Routes = [
   {path:"login", component: LoginComponent},
   {path:"dashboard", component: DashboardComponent, canActivate: [AuthGuard]},
   {path:"profile", component: ProfileComponent, canActivate: [AuthGuard]},
-  {path:"newPosting", component: NewPostingComponent, canActivate: [AuthGuard]}
+  {path:"newPosting", component: NewPostingComponent, canActivate: [AuthGuard]},
+  {path:"editPost", component: EditPostComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -56,7 +65,9 @@ const appRoutes: Routes = [
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    NewPostingComponent
+    NewPostingComponent,
+    EditPostComponent,
+    SearchFilterComponent
   ],
   imports: [
     HttpModule,
@@ -74,10 +85,15 @@ const appRoutes: Routes = [
     MatOptionModule,
     MatSelectModule,
     MatSlideToggleModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatSliderModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserAnimationsModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

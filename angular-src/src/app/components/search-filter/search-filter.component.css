@@ -1,0 +1,12 @@
+#dashboard_button {
+  margin-top: 10px;
+}
+
+mat-slider {
+  width: 300px;
+}
+
+.mat-slider-thumb-label {
+  width: 32px !important;
+  height: 32px !important;
+}

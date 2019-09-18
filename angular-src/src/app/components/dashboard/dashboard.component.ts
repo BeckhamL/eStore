@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Item } from '../../models/item';
 import { Category } from '../../models/category';
 import { User } from 'src/app/models/user';
+import { PostService } from '../../services/post.service';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,69 +16,50 @@ export class DashboardComponent implements OnInit {
   loggedUser: User = JSON.parse(localStorage.getItem("user"));
   categories: Category;
   search: string;
+  jsonString: String;
   
-  items: Item[] = [{
-    itemName :"keys",
-    itemImage: "https://material.angular.io/assets/img/examples/shiba2.jpg",
-    itemCost: 12,
-    itemOwner: this.loggedUser.email,
-    itemDate: new Date(),
-    itemDescription: "this is my dog",
-    itemCategory: Category.Cooking
+  items: Item[];
+  clickedPost: Item;
 
-  },
-  {
-    itemName :"jambolayah",
-    itemImage: "https://material.angular.io/assets/img/examples/shiba2.jpg",
-    itemCost: 12,
-    itemOwner: this.loggedUser.email,
-    itemDate: new Date(),
-    itemDescription: "great for outdoor use",
-    itemCategory: Category.Cooking
+  @Output() clickedPostSend = new EventEmitter<Item>();
 
-  },
-  {
-    itemName :"keys",
-    itemImage: "https://material.angular.io/assets/img/examples/shiba2.jpg",
-    itemCost: 12,
-    itemOwner: this.loggedUser.email,
-    itemDate: new Date(),
-    itemDescription: "this is my dog",
-    itemCategory: Category.Sports
-
-  },
-  {
-    itemName :"keys",
-    itemImage: "https://material.angular.io/assets/img/examples/shiba2.jpg",
-    itemCost: 24,
-    itemOwner: this.loggedUser.email,
-    itemDate: new Date(),
-    itemDescription: "swag",
-    itemCategory: Category.Misc
-
-  },
-  {
-    itemName :"keys",
-    itemImage: "https://material.angular.io/assets/img/examples/shiba2.jpg",
-    itemCost: 613,
-    itemOwner: this.loggedUser.email,
-    itemDate: new Date(),
-    itemDescription: "this is my dog",
-    itemCategory: Category.AutoMobiles
-
-  }];
-
-  constructor() { }
+  constructor(
+    private postService: PostService,
+    private snackBar: MatSnackBar,
+    private router: Router) { }
 
   ngOnInit() {
+    this.postService.getPosts().subscribe(items => {
+      this.items = items;
+    });
   }
 
-  onItemClick() {
-    console.log("clicked item ");
+  onItemClick(index: number) {
+    this.clickedPost = this.items[index];
+    this.clickedPostSend.emit(this.clickedPost);
   }
 
   onSearchButton() {
     console.log(this.search);
   }
+
+  removeClickedPost(index: string) {
+    this.clickedPost = this.items[index];
+    console.log(this.clickedPost);
+    this.snackBar.open('Are you sure you want to delete ' + this.clickedPost.itemName + "?", 'Yes', {
+      duration: 6000,
+    });
+  //   this.jsonString = JSON.stringify(this.clickedPost);
+  //   console.log(this.jsonString);
+  //   console.log(this.jsonString.substring(8, 32))
+  //   this.postService.removePostById(this.jsonString.substring(8, 32)).subscribe(data => {
+  //     if(data) {
+  //       console.log(data);
+  //     }
+  //     else {
+  //       console.log("unable to delete " + index);
+  //     }
+  //   });
+   }
 
 }

@@ -14,6 +14,9 @@ import { PostService } from '../../services/post.service';
 })
 export class NewPostingComponent implements OnInit {
 
+  enumCategories = Category;
+  keys = Object.keys;
+
   loggedUser: User = JSON.parse(localStorage.getItem("user"));
   itemCategory: Category;
   itemName: string;
@@ -55,8 +58,7 @@ export class NewPostingComponent implements OnInit {
         this.router.navigate(["/dashboard"]);
       }
       else {
-        //this.flashMessages.show(data, {cssClass: 'alert-danger', timeout: 3000});
-        console.log(data);
+        this.flashMessages.show("Error while creating post", {cssClass: 'alert-danger', timeout: 3000});
         this.router.navigate(["/newPosting"]);
       }
     });

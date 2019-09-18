@@ -16,7 +16,3 @@ const Item = module.exports = mongoose.model("Item", itemSchema);
 module.exports.addItem = function(item, callback) {
   item.save(callback);
 }
-
-module.exports.findAllPosts = function(item, callback) {
-  Item.find();
-}
