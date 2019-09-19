@@ -12,6 +12,9 @@
           <a class="nav-link" routerLink="/dashboard">Dashboard</a>
       </li>
       <li *ngIf="authService.loggedIn()" class="nav-item">
+          <a class="nav-link" routerLink="/analytics">Analytics</a>
+      </li>
+      <li *ngIf="authService.loggedIn()" class="nav-item">
           <a class="nav-link" routerLink="/newPosting">Create a new post</a>
       </li>
     </ul>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../../models/category';
 import { DatePipe } from '@angular/common';
+import { PostService } from '../../services/post.service';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-search-filter',
@@ -9,6 +11,7 @@ import { DatePipe } from '@angular/common';
 })
 export class SearchFilterComponent implements OnInit {
 
+  search: string;
   filterPrice: number;
   filterCategory: string;
   filterDate: Date;
@@ -16,7 +19,11 @@ export class SearchFilterComponent implements OnInit {
   enumCategories = Category;
   keys = Object.keys;
 
-  constructor(private datePipe: DatePipe) { }
+  @Output() userSearch = new EventEmitter();
+
+  constructor(
+    private datePipe: DatePipe,
+    private postService: PostService) { }
 
   ngOnInit() {
   }
@@ -38,6 +45,13 @@ export class SearchFilterComponent implements OnInit {
 
   filterOptions() {
     console.log(this.filterCategory + " " + this.filterPrice + " " + this.filterDate);
+  }
+
+  onSearchButton() {
+    this.postService.searchPosting(this.search).subscribe(data => {
+      //console.log(data);
+      this.userSearch.emit(data);
+    });
   }
 
 }

@@ -15,7 +15,6 @@ export class DashboardComponent implements OnInit {
 
   loggedUser: User = JSON.parse(localStorage.getItem("user"));
   categories: Category;
-  search: string;
   jsonString: String;
   
   items: Item[];
@@ -39,10 +38,6 @@ export class DashboardComponent implements OnInit {
     this.clickedPostSend.emit(this.clickedPost);
   }
 
-  onSearchButton() {
-    console.log(this.search);
-  }
-
   removeClickedPost(index: string) {
     this.clickedPost = this.items[index];
     console.log(this.clickedPost);
@@ -60,6 +55,11 @@ export class DashboardComponent implements OnInit {
   //       console.log("unable to delete " + index);
   //     }
   //   });
+   }
+
+   getData(value) {
+     this.items = value;
+     console.log(this.items);
    }
 
 }

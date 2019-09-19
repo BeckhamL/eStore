@@ -44,6 +44,36 @@ router.get("/dashboard", function(req, res) {
   });
 });
 
+router.get("/dashboard/search", function(req, res) {
+
+  if (req.query.name == undefined) {
+    Item.find({}, function(err, items) {
+      if(err) {
+        res.json({
+          success: false,
+          msg: err
+        })
+      }
+      else {
+        res.json(items);
+      }
+    });
+  }
+  else {
+    Item.find({"itemName": req.query.name}, function(err, items) {
+      if(err) {
+        res.json({
+          success: false,
+          msg: err
+        })
+      }
+      else {
+        res.json(items);
+      }
+    });
+ }
+});
+
 router.delete("/dashboard", function(req, res) {
   let id = req.param('id');
 

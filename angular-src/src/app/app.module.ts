@@ -17,7 +17,10 @@ import {
   MatSnackBarModule,
   MatSliderModule,
   MatNativeDateModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatBadgeModule,
+  MatIconModule,
+  MatTabsModule
  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +36,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NewPostingComponent } from './components/new-posting/new-posting.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
 
 // Services
 import { ValidateService } from './services/validate.service';
@@ -53,7 +57,8 @@ const appRoutes: Routes = [
   {path:"dashboard", component: DashboardComponent, canActivate: [AuthGuard]},
   {path:"profile", component: ProfileComponent, canActivate: [AuthGuard]},
   {path:"newPosting", component: NewPostingComponent, canActivate: [AuthGuard]},
-  {path:"editPost", component: EditPostComponent, canActivate: [AuthGuard]}
+  {path:"editPost", component: EditPostComponent, canActivate: [AuthGuard]},
+  {path:"analytics", component: AnalyticsComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -67,7 +72,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     NewPostingComponent,
     EditPostComponent,
-    SearchFilterComponent
+    SearchFilterComponent,
+    AnalyticsComponent
   ],
   imports: [
     HttpModule,
@@ -90,6 +96,9 @@ const appRoutes: Routes = [
     MatSliderModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatBadgeModule,
+    MatIconModule,
+    MatTabsModule,
     BrowserAnimationsModule,
     FlashMessagesModule.forRoot()
   ],

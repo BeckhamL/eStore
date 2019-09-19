@@ -37,4 +37,16 @@ export class PostService {
 
     return this.http.delete('http://localhost:3000/posts/dashboard' + id, {params});
   }
+
+  searchPosting(name: string) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+  
+    if(name == "") {
+      return this.http.get('http://localhost:3000/posts/dashboard/search', {headers}).pipe(map(res => res.json()));
+    }
+    else {
+      return this.http.get('http://localhost:3000/posts/dashboard/search?name=' + name).pipe(map(res => res.json()));
+    }
+  }
 }
