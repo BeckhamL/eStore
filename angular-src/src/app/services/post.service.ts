@@ -49,4 +49,24 @@ export class PostService {
       return this.http.get('http://localhost:3000/posts/dashboard/search?name=' + name).pipe(map(res => res.json()));
     }
   }
+
+  filterPosts(category: string, price: number) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    if (category == undefined) {
+      return this.http.get('http://localhost:3000/posts/dashboard/filter?price=' + price)
+      .pipe(map(res => res.json()));
+    }
+    else if (price == undefined) {
+      return this.http.get('http://localhost:3000/posts/dashboard/filter?category=' + category)
+      .pipe(map(res => res.json()));
+  
+    }
+    else {
+      return this.http.get('http://localhost:3000/posts/dashboard/filter?category=' + category + "&price=" + price)
+      .pipe(map(res => res.json()));
+  
+    }
+  }
 }

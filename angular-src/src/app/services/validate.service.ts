@@ -32,4 +32,14 @@ export class ValidateService {
       return true;
     }
   }
+
+  validateFilterOptions(category: string, price: number) {
+
+    if(category == undefined && price == undefined) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
 }

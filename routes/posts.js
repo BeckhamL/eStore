@@ -60,7 +60,7 @@ router.get("/dashboard/search", function(req, res) {
     });
   }
   else {
-    Item.find({"itemName": req.query.name}, function(err, items) {
+    Item.find({"itemName": { $regex: req.query.name, $options: 'i'} }, function(err, items) {
       if(err) {
         res.json({
           success: false,
@@ -72,6 +72,22 @@ router.get("/dashboard/search", function(req, res) {
       }
     });
  }
+});
+
+router.get("/dashboard/filter", function(req,res) {
+
+  Item.find({"itemCategory": req.query.category, "itemCost": {$gt: 1, $lt: req.query.price+1}}, function(err, items) {
+
+    if(err) {
+      res.json({
+        success: false,
+        msg: err
+      })
+    }
+    else {
+      res.json(items);
+    }
+  });
 });
 
 router.delete("/dashboard", function(req, res) {

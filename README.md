@@ -13,5 +13,6 @@ Website will run on ```localhost:3000```
 # TODO
 
 1. Add route to my cart (use angular material for notifs)
-2. Filter postings by categories
+2. Add footer
 3. make edit page
+4. Filter by date

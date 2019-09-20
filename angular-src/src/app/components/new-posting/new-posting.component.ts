@@ -43,7 +43,7 @@ export class NewPostingComponent implements OnInit {
       itemDescription: this.itemDescription,
       itemImage: this.itemImage,
       itemDate: new Date(),
-      itemCategory: Category.AutoMobiles,
+      itemCategory: this.itemCategory,
       itemOwner: this.loggedUser.email
     }
 
