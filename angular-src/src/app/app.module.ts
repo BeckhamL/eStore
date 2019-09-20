@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { 
   MatToolbarModule, 
   MatMenuModule, 
@@ -20,7 +20,8 @@ import {
   MatDatepickerModule,
   MatBadgeModule,
   MatIconModule,
-  MatTabsModule
+  MatTabsModule,
+  MatStepperModule
  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -78,6 +79,7 @@ const appRoutes: Routes = [
   imports: [
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
@@ -99,6 +101,7 @@ const appRoutes: Routes = [
     MatBadgeModule,
     MatIconModule,
     MatTabsModule,
+    MatStepperModule,
     BrowserAnimationsModule,
     FlashMessagesModule.forRoot()
   ],

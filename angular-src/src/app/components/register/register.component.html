@@ -1,21 +1,57 @@
-<form style="margin-top:30px;"> 
-    <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
-        <input type="text" [(ngModel)]="name" name="name" class="form-control" autocomplete="off">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Username</label>
-        <input type="email" [(ngModel)]="username" name="username" class="form-control" autocomplete="off">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" [(ngModel)]="email" name="email" class="form-control" id="exampleInputEmail1" autocomplete="off">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" [(ngModel)]="password" name="password" class="form-control">
-    </div>
-</form>
+<mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <mat-form-field>
+          <input matInput [(ngModel)]="name" name="name" placeholder="Name" formControlName="firstCtrl" required autocomplete="off">
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Select your username</ng-template>
+        <mat-form-field>
+          <input matInput [(ngModel)]="username" name="username" placeholder="Username" formControlName="secondCtrl" required autocomplete="off">
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Enter email</ng-template>
+        <mat-form-field>
+          <input type="email" matInput [(ngModel)]="email" name="email" placeholder="Email" formControlName="thirdCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="fourthFormGroup">
+      <form [formGroup]="fourthFormGroup">
+        <ng-template matStepLabel>Choose a password</ng-template>
+        <mat-form-field>
+          <input type="password" matInput [(ngModel)]="password" name="password" placeholder="Password" formControlName="fourthCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-raised-button color="accent" (click)="onRegisterSubmit()">Register</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
 
-<button mat-raised-button color="accent" (click)="onRegisterSubmit()">Register</button>

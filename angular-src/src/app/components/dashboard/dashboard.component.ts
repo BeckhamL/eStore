@@ -59,7 +59,6 @@ export class DashboardComponent implements OnInit {
 
    getData(value) {
      this.items = value;
-     console.log(this.items);
    }
 
 }
