@@ -32,10 +32,7 @@ export class PostService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
-    let params = new HttpParams();
-    params = params.set('id', id);
-
-    return this.http.delete('http://localhost:3000/posts/dashboard' + id, {params});
+    return this.http.delete('http://localhost:3000/posts/dashboard?id=' + id, {headers});
   }
 
   searchPosting(name: string) {

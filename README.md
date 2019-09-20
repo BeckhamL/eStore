@@ -10,6 +10,18 @@ ng build
 ```
 Website will run on ```localhost:3000```
 
+# Dev
+```
+nodemon
+```
+```
+mongod
+mongo
+```
+```
+ng serve
+```
+
 # TODO
 
 1. Add route to my cart (use angular material for notifs)
