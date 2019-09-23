@@ -6,6 +6,7 @@ import { Output, EventEmitter } from '@angular/core';
 import { ValidateService } from '../../services/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { Item } from '../../models/item';
 
 @Component({
   selector: 'app-search-filter',

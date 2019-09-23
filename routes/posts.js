@@ -76,18 +76,48 @@ router.get("/dashboard/search", function(req, res) {
 
 router.get("/dashboard/filter", function(req,res) {
 
-  Item.find({"itemCategory": req.query.category, "itemCost": {$gt: 1, $lt: req.query.price+1}}, function(err, items) {
+  if (req.query.category == undefined) {
+    Item.find({"itemCost": {$lte: req.query.price}}, function(err, items) {
 
-    if(err) {
-      res.json({
-        success: false,
-        msg: err
-      })
-    }
-    else {
-      res.json(items);
-    }
-  });
+      if(err) {
+        res.json({
+          success: false,
+          msg: err
+        })
+      }
+      else {
+        res.json(items);
+      }
+    });
+  }
+  else if (req.query.price == undefined) {
+    Item.find({"itemCategory": req.query.category}, function(err, items) {
+
+      if(err) {
+        res.json({
+          success: false,
+          msg: err
+        })
+      }
+      else {
+        res.json(items);
+      }
+    });
+  }
+  else {
+    Item.find({"itemCategory": req.query.category, "itemCost": {$gt: 1, $lt: req.query.price+1}}, function(err, items) {
+
+      if(err) {
+        res.json({
+          success: false,
+          msg: err
+        })
+      }
+      else {
+        res.json(items);
+      }
+    });
+  }
 });
 
 router.delete("/dashboard", function(req, res) {

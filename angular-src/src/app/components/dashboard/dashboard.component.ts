@@ -6,6 +6,8 @@ import { PostService } from '../../services/post.service';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { MatDialog } from '@angular/material/dialog';
+import { EditPostComponent } from '../edit-post/edit-post.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,7 +29,8 @@ export class DashboardComponent implements OnInit {
     private postService: PostService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private flashMessages: FlashMessagesService) { }
+    private flashMessages: FlashMessagesService,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.postService.getPosts().subscribe(items => {
@@ -38,30 +41,34 @@ export class DashboardComponent implements OnInit {
   onItemClick(index: number) {
     this.clickedPost = this.items[index];
     this.clickedPostSend.emit(this.clickedPost);
+    const dialogRef = this.dialog.open(EditPostComponent);
   }
 
   removeClickedPost(index: string) {
     this.clickedPost = this.items[index];
-    // console.log(this.clickedPost);
-    // this.snackBar.open('Are you sure you want to delete ' + this.clickedPost.itemName + "?", 'Yes', {
-    //   duration: 6000,
-    // });
-    this.jsonString = JSON.stringify(this.clickedPost);
-
-    this.postService.removePostById(this.jsonString.substring(8, 32)).subscribe(data => {
-      if(data) {
-        this.postService.getPosts().subscribe(items => {
-          this.items = items;
-        });
-      }
-      else {
-        this.flashMessages.show("Error while deleting post", {cssClass: 'alert-danger', timeout: 3000});
-        this.router.navigate(['/dashboard']);
-      }
+    let msbr = this.snackBar.open('Are you sure you want to delete ' + this.clickedPost.itemName + "?", 'Yes', {
+      duration: 6000,
     });
+
+    msbr.onAction().subscribe(() => {
+      this.jsonString = JSON.stringify(this.clickedPost);
+
+      this.postService.removePostById(this.jsonString.substring(8, 32)).subscribe(data => {
+        if(data) {
+          this.postService.getPosts().subscribe(items => {
+            this.items = items;
+          });
+        }
+        else {
+          this.flashMessages.show("Error while deleting post", {cssClass: 'alert-danger', timeout: 3000});
+          this.router.navigate(['/dashboard']);
+        }
+      });
+    })
+
    }
 
-   getData(value) {
+   getData(value : Item[]) {
      this.items = value;
    }
 

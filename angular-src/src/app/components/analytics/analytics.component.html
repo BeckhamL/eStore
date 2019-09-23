@@ -7,7 +7,9 @@
       <mat-select [(value)]="selected">
         <mat-option value="1" (click)="sortDateDescending()">Date newest to oldest</mat-option>
         <mat-option value="2" (click)="sortDateAscending()">Date oldest to newest</mat-option>
-        <mat-option value="3">Category</mat-option>
+        <mat-option value="3" (click)="sortAlphabeticalAZ()">Sort alphabetical (A-Z)</mat-option>
+        <mat-option value="4" (click)="sortAlphabeticalZA()">Sort alphabetical (Z-A)</mat-option>
+        <mat-option value="5" (click)="sortByCategory()">Category</mat-option>
       </mat-select>
     </mat-form-field>
       <mat-list>

@@ -39,4 +39,22 @@ export class AnalyticsComponent implements OnInit {
     })
   }
 
+  sortByCategory() {
+    this.items.sort((a: Item, b: Item) => {
+      return a.itemCategory.localeCompare(b.itemCategory);
+    })
+  }
+
+  sortAlphabeticalAZ() {
+    this.items.sort((a: Item, b: Item) => {
+      return a.itemName.localeCompare(b.itemName);
+    })
+  }
+
+  sortAlphabeticalZA() {
+    this.items.sort((a: Item, b: Item) => {
+      return b.itemName.localeCompare(a.itemName);
+    })
+  }
+
 }
