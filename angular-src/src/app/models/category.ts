@@ -4,5 +4,9 @@ export enum Category {
   Toys = "Toys",
   Sports = "Sports",
   Gardening = "Gardening",
-  Clothing = "Clothing"
+  Clothing = "Clothing",
+  Food = "Food",
+  Travel = "Travel",
+  Beauty = "Beauty",
+  Toddler = "Toddler"
 }

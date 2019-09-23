@@ -21,6 +21,8 @@ import {
   MatBadgeModule,
   MatIconModule,
   MatTabsModule,
+  MatListModule,
+  MatLineModule,
   MatStepperModule
  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -50,6 +52,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthGuard } from './guards/auth.guard';
 import { SearchFilterComponent } from './components/search-filter/search-filter.component';
 import { DatePipe } from '@angular/common';
+import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes: Routes = [
   {path:"", component: HomeComponent},
@@ -74,7 +77,8 @@ const appRoutes: Routes = [
     NewPostingComponent,
     EditPostComponent,
     SearchFilterComponent,
-    AnalyticsComponent
+    AnalyticsComponent,
+    FooterComponent
   ],
   imports: [
     HttpModule,
@@ -102,6 +106,8 @@ const appRoutes: Routes = [
     MatIconModule,
     MatTabsModule,
     MatStepperModule,
+    MatListModule,
+    MatLineModule,
     BrowserAnimationsModule,
     FlashMessagesModule.forRoot()
   ],

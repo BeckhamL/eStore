@@ -1,6 +1,36 @@
 <mat-tab-group>
-  <mat-tab label="Sale history">history</mat-tab>
-  <mat-tab label="Current listings">listings</mat-tab>
+  <mat-tab label="Sale history"></mat-tab>
+  <mat-tab label="Current listings">
+
+    <mat-form-field>
+      <mat-label>Sort by:</mat-label>
+      <mat-select [(value)]="selected">
+        <mat-option value="1" (click)="sortDateDescending()">Date newest to oldest</mat-option>
+        <mat-option value="2" (click)="sortDateAscending()">Date oldest to newest</mat-option>
+        <mat-option value="3">Category</mat-option>
+      </mat-select>
+    </mat-form-field>
+      <mat-list>
+          <mat-list-item *ngFor="let item of items">
+    
+            <mat-icon mat-list-icon *ngIf="item.itemCategory == 'Cooking'">local_restaurant</mat-icon>
+            <mat-icon mat-list-icon *ngIf="item.itemCategory == 'Games'">games</mat-icon>
+            <mat-icon mat-list-icon *ngIf="item.itemCategory == 'Toys'">motorcycle</mat-icon>
+            <mat-icon mat-list-icon *ngIf="item.itemCategory == 'Sports'">sports_tennis</mat-icon>
+            <mat-icon mat-list-icon *ngIf="item.itemCategory == 'Gardening'">wb_cloudy</mat-icon>
+            <mat-icon mat-list-icon *ngIf="item.itemCategory == 'Clothing'">wc</mat-icon>
+            <mat-icon mat-list-icon *ngIf="item.itemCategory == 'Food'">ramen_dining</mat-icon>
+            <mat-icon mat-list-icon *ngIf="item.itemCategory == 'Travel'">airplanemode_active</mat-icon>
+            <mat-icon mat-list-icon *ngIf="item.itemCategory == 'Beauty'">face</mat-icon>
+            <mat-icon mat-list-icon *ngIf="item.itemCategory == 'Toddler'">child_care</mat-icon>
+            <h1 mat-line>{{ item.itemName }}</h1> 
+            <p mat-line> {{ item.itemDescription }} </p>
+            <p mat-line> {{ item.itemDate | date: 'MMMM d, yyyy'}} </p>
+            <p mat-line> {{ item.itemCategory }} </p>
+    
+          </mat-list-item>
+        </mat-list>
+  </mat-tab>
   <mat-tab label="Social media">SM</mat-tab>
   <mat-tab label="Data">data</mat-tab>
 </mat-tab-group>
