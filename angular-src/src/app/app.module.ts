@@ -53,6 +53,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { SearchFilterComponent } from './components/search-filter/search-filter.component';
 import { DatePipe } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
+import { StoreComponent } from './components/store/store.component';
 
 const appRoutes: Routes = [
   {path:"", component: HomeComponent},
@@ -62,7 +63,8 @@ const appRoutes: Routes = [
   {path:"profile", component: ProfileComponent, canActivate: [AuthGuard]},
   {path:"newPosting", component: NewPostingComponent, canActivate: [AuthGuard]},
   {path:"editPost", component: EditPostComponent, canActivate: [AuthGuard]},
-  {path:"analytics", component: AnalyticsComponent, canActivate: [AuthGuard]}
+  {path:"analytics", component: AnalyticsComponent, canActivate: [AuthGuard]},
+  {path:"store", component: StoreComponent}
 ];
 
 @NgModule({
@@ -78,7 +80,8 @@ const appRoutes: Routes = [
     EditPostComponent,
     SearchFilterComponent,
     AnalyticsComponent,
-    FooterComponent
+    FooterComponent,
+    StoreComponent
   ],
   imports: [
     HttpModule,

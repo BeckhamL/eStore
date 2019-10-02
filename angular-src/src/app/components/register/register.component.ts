@@ -46,13 +46,27 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterSubmit() {
-    const user: User = {
-      name: this.name,
-      username: this.username,
-      email: this.email,
-      password: this.password,
-      userType: "Member"
-    };
+
+    let user: User;
+
+    if(this.username == "admin" || this.username == "Admin") {
+        user = {
+        name: this.name,
+        username: this.username,
+        email: this.email,
+        password: this.password,
+        userType: "Admin"
+      };
+    }
+    else {
+      user = {
+        name: this.name,
+        username: this.username,
+        email: this.email,
+        password: this.password,
+        userType: "Member"
+      };
+    }
 
     if(!this.validateService.validateRegister(user)) {
       this.flashMessage.show("Missing fields", {cssClass: 'alert-danger', timeout: 3000});
@@ -70,7 +84,8 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(["/login"]);
       }
       else {
-        this.flashMessage.show("Unable to register", {cssClass: 'alert-danger', timeout: 3000});
+        this.flashMessage.show(data.msg._message, {cssClass: 'alert-danger', timeout: 3000});
+        console.log(data);
         this.router.navigate(["register"]);
       }
     })

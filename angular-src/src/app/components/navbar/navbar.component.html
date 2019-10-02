@@ -8,14 +8,17 @@
       <li *ngIf="authService.loggedIn()" class="nav-item">
         <a class="nav-link" routerLink="/profile">Profile</a>
       </li>
-      <li *ngIf="authService.loggedIn()" class="nav-item">
+      <li *ngIf='authService.loggedIn() && user?.userType == "Admin"' class="nav-item">
           <a class="nav-link" routerLink="/dashboard">Dashboard</a>
       </li>
-      <li *ngIf="authService.loggedIn()" class="nav-item">
+      <li *ngIf='authService.loggedIn() && user?.userType == "Admin"' class="nav-item">
           <a class="nav-link" routerLink="/analytics">Analytics</a>
       </li>
-      <li *ngIf="authService.loggedIn()" class="nav-item">
+      <li *ngIf='authService.loggedIn() && user?.userType == "Admin"' class="nav-item">
           <a class="nav-link" routerLink="/newPosting">Create a new post</a>
+      </li>
+      <li *ngIf='authService.loggedIn() && user?.userType == "Member"' class="nav-item">
+        <a class="nav-link" routerLink="/store">Store</a>
       </li>
     </ul>
   </div>

@@ -11,7 +11,8 @@ router.post("/register", function(req,res) {
     name: req.body.name,
     email: req.body.email,
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    userType: req.body.userType
   });
 
   User.addUser(newUser, function(err, user) {
@@ -25,6 +26,23 @@ router.post("/register", function(req,res) {
       res.json({
         success: true,
         msg: "Successfully registered user"
+      })
+    }
+  });
+});
+
+router.get("/users", function(req, res) {
+  User.find({}, (err, users) => {
+
+    if(err) {
+      res.json({
+        success: false,
+        msg: "Unable to get users"
+      })
+    }
+    else {
+      res.json({
+        users
       })
     }
   });
@@ -64,7 +82,8 @@ router.post("/authenticate", function(req,res) {
               id: user._id,
               name: user.name,
               username: user.username,
-              email: user.email
+              email: user.email,
+              userType: user.userType
             }
           })
       }

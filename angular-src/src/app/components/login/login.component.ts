@@ -23,19 +23,39 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginSubmit() {
-    const user: User = {
-      name: "",
-      username: this.username,
-      email: "",
-      password: this.password,
-      userType: "Member"
+
+    let user: User;
+    if(this.username == 'admin' || this.username == 'Admin') {
+        user = {
+        name: "",
+        username: this.username,
+        email: "",
+        password: this.password,
+        userType: "Admin"
+      }
+    } 
+    else {
+        user = {
+        name: "",
+        username: this.username,
+        email: "",
+        password: this.password,
+        userType: "Member"
+      }
     }
 
     this.authService.authenticateUser(user).subscribe(data => {
       if(data.success) {
-        console.log(this.authService.loggedIn());
-        this.authService.storeUserDate(data.token, data.user);
-        this.router.navigate(["/dashboard"]);
+
+        if(data.user.userType == "Admin") {
+          this.authService.storeUserData(data.token, data.user);
+          this.router.navigate(["/dashboard"]);
+        }
+        else {
+          this.authService.storeUserData(data.token, data.user);
+          this.router.navigate(["/store"]);
+        }
+
       }
       else {
         this.flashMessages.show(data.msg, {cssClass: 'alert-danger', timeout: 3000});

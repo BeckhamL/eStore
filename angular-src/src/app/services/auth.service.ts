@@ -46,7 +46,7 @@ export class AuthService {
     return tokenNotExpired("id_token");
   }
 
-  storeUserDate(token: string, user:User ) {
+  storeUserData(token: string, user:User ) {
 
     // Store the user locally
     localStorage.setItem('id_token', token);
