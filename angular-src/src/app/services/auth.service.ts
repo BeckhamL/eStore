@@ -28,6 +28,11 @@ export class AuthService {
     return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers}).pipe(map(res => res.json()));
   }
 
+  getUser() {
+    this.user = JSON.parse(localStorage.getItem("user"));
+    return this.user;
+  }
+
   getProfile() {
     let headers = new Headers();
     this.loadToken();
