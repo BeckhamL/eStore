@@ -1,6 +1,7 @@
 <app-search-filter (userSearch)="getData($event)"></app-search-filter>
-<mat-grid-list cols="3" rowHeight="548px" gutterSize="10px" >
+<mat-grid-list cols="3" rowHeight="548px" gutterSize="10px">
   <mat-grid-tile *ngFor="let item of items; let i = index">
+    <div *ngIf="checkItemQuantity(i)"></div>
     <mat-card class="example-card" (click)="onItemClick(i)">
         <mat-card-header>
           <mat-card-title>{{ item.itemName }}</mat-card-title>

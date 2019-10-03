@@ -63,8 +63,32 @@ export class StoreComponent implements OnInit {
     });
    }
 
+   removeItemQuantityZero(index: string) {
+    this.clickedPost = this.items[index];
+
+    this.jsonString = JSON.stringify(this.clickedPost);
+
+    this.postService.removePostById(this.jsonString.substring(8, 32)).subscribe(data => {
+      if(data) {
+        this.postService.getPosts().subscribe(items => {
+          this.items = items;
+        });
+      }
+      else {
+        this.flashMessages.show("Error while deleting post", {cssClass: 'alert-danger', timeout: 3000});
+        this.router.navigate(['/dashboard']);
+      }
+    });
+   }
+
    getData(value : Item[]) {
      this.items = value;
+   }
+
+   checkItemQuantity(index: string) {
+     if(this.items[index].itemQuantity == 0) {
+       this.removeItemQuantityZero(index);
+     }
    }
 
 }
