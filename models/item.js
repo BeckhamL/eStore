@@ -8,6 +8,7 @@ const itemSchema = mongoose.Schema({
   itemOwner: {type: String},
   itemDate: {type: Date},
   itemDescription: {type: String},
+  itemQuantity: {type: Number},
   itemCategory: {type: Category}
 });
 

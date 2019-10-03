@@ -23,6 +23,7 @@ export class NewPostingComponent implements OnInit {
   itemCost: number;
   itemDescription: string;
   itemImage: string;
+  itemQuantity: number;
   item: Item;
 
   constructor(
@@ -44,7 +45,8 @@ export class NewPostingComponent implements OnInit {
       itemImage: this.itemImage,
       itemDate: new Date(),
       itemCategory: this.itemCategory,
-      itemOwner: this.loggedUser.email
+      itemOwner: this.loggedUser.email,
+      itemQuantity: this.itemQuantity
     }
 
     if (!this.validateService.validateNewPost(item)) {

@@ -11,7 +11,8 @@ router.post("/newPosting", function(req, res) {
     itemOwner: req.body.itemOwner,
     itemDate: req.body.itemDate,
     itemDescription: req.body.itemDescription,
-    itemCategory: req.body.itemCategory
+    itemCategory: req.body.itemCategory,
+    itemQuantity: req.body.itemQuantity
   });
 
   Item.addItem(newPost, function(err, item) {
@@ -134,6 +135,26 @@ router.delete("/dashboard", function(req, res) {
       res.json({
         success: true,
         msg: "Successfully deleted"
+      })
+    }
+  });
+});
+
+router.post("/store/update", function(req, res) {
+  let id = req.param('id');
+
+  Item.updateOne({"_id" :id}, {$inc: {"itemQuantity": -1 }}, function(err, item) {
+
+    if(err) {
+      res.json({
+        success: false,
+        msg: err
+      })
+    }
+    else {
+      res.json({
+        success: true,
+        msg: "Successfully updated"
       })
     }
   });

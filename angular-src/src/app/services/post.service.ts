@@ -66,4 +66,11 @@ export class PostService {
   
     }
   }
+
+  reduceQuantityOfPost(id: string) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post('http://localhost:3000/posts/store/update?id=' + id, {headers}).pipe(map(res => res.json));
+  }
 }

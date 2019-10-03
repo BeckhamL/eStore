@@ -54,6 +54,7 @@ import { SearchFilterComponent } from './components/search-filter/search-filter.
 import { DatePipe } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { StoreComponent } from './components/store/store.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const appRoutes: Routes = [
   {path:"", component: HomeComponent},
@@ -64,7 +65,8 @@ const appRoutes: Routes = [
   {path:"newPosting", component: NewPostingComponent, canActivate: [AuthGuard]},
   {path:"editPost", component: EditPostComponent, canActivate: [AuthGuard]},
   {path:"analytics", component: AnalyticsComponent, canActivate: [AuthGuard]},
-  {path:"store", component: StoreComponent}
+  {path:"store", component: StoreComponent},
+  {path:"cart", component: CartComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -81,7 +83,8 @@ const appRoutes: Routes = [
     SearchFilterComponent,
     AnalyticsComponent,
     FooterComponent,
-    StoreComponent
+    StoreComponent,
+    CartComponent
   ],
   imports: [
     HttpModule,

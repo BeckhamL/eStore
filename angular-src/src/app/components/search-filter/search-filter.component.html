@@ -1,6 +1,7 @@
-<h1>My postings</h1>
-<input class="form-control" type="text" placeholder="Search your postings" [(ngModel)]="search" name="search" autocomplete="off">
-<button type="button" class="btn btn-success btn-lg" id="dashboard_button" (click)="onSearchButton()">SEARCH</button>
+<h1 *ngIf='authService.getUser().userType == "Admin"; else member'>My postings</h1>
+<ng-template #member><h1>Search postings</h1></ng-template>
+<input class="form-control" type="text" placeholder="Search" [(ngModel)]="search" name="search" autocomplete="off">
+<button type="button" class="btn btn-success btn-lg" id="dashboard_button" (click)="onSearchButton()">FIND</button>
 <h3>Advanced filter</h3>
 <mat-accordion multi="true">
   <mat-expansion-panel>

@@ -7,6 +7,7 @@ import { ValidateService } from '../../services/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 import { Item } from '../../models/item';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-search-filter',
@@ -30,7 +31,8 @@ export class SearchFilterComponent implements OnInit {
     private postService: PostService,
     private validateService: ValidateService,
     private flashMessages: FlashMessagesService,
-    private router: Router) { }
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
   }

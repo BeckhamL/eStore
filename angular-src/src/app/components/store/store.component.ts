@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Item } from '../../models/item';
+import { Category } from '../../models/category';
+import { User } from 'src/app/models/user';
+import { PostService } from '../../services/post.service';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-store',
@@ -7,9 +15,56 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreComponent implements OnInit {
 
-  constructor() { }
+  loggedUser: User = JSON.parse(localStorage.getItem("user"));
+  categories: Category;
+  jsonString: String;
+  
+  items: Item[];
+  clickedPost: Item;
+
+  @Output() clickedPostSend = new EventEmitter<Item>();
+
+  constructor(
+    private postService: PostService,
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private flashMessages: FlashMessagesService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
+    this.postService.getPosts().subscribe(items => {
+      this.items = items;
+    });
   }
+
+  onItemClick(index: number) {
+    this.clickedPost = this.items[index];
+    this.clickedPostSend.emit(this.clickedPost);
+  }
+
+  addToCart(index: string) {
+    this.clickedPost = this.items[index];
+
+    this.jsonString = JSON.stringify(this.clickedPost);
+
+    this.postService.reduceQuantityOfPost(this.jsonString.substring(8, 32)).subscribe(data => {
+      if(data) {
+        this.flashMessages.show("Added to you cart", {cssClass: 'alert-success', timeout: 3000});
+        this.router.navigate(['/store']);
+        this.postService.getPosts().subscribe(items => {
+          this.items = items;
+        });
+      }
+      else {
+        this.flashMessages.show("Error while deleting post", {cssClass: 'alert-danger', timeout: 3000});
+        this.router.navigate(['/store']);
+      }
+    });
+   }
+
+   getData(value : Item[]) {
+     this.items = value;
+   }
 
 }

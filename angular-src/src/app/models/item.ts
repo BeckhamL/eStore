@@ -1,4 +1,3 @@
-import { User } from './user';
 import { Category } from './category';
 
 export interface Item {
@@ -9,4 +8,5 @@ export interface Item {
   itemDate: Date;
   itemDescription: string;
   itemCategory: Category;
+  itemQuantity: number;
 }
