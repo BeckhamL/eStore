@@ -1,8 +1,53 @@
-<h2>Welcome to my store where <br> you can find all my <br> favourite things</h2>
-<p>All items are hand made and 100% authentic</p>
+
 <!--<img src="../../../assets/img/modern-business-tools.jpg" id="image">-->
-<div class="mainForm">
-  <h1> Welcome </h1>
-  <button mat-raised-button color="primary" routerLink="/login">LOGIN</button>
-  <button mat-raised-button color="accent" routerLink="/register">REGISTER</button>
+
+<div class="home_container">
+  
+  <div class="text">
+    <h1 id="title">Yvonne's Store</h1>
+    <h2>Welcome to my store <br> where you can find all <br> my favourite things I've <br> created.</h2>
+    <p>I love creating art and working with my hands. <br> Whether it's painting, working with clay
+      or drawings <br> I put love and passion into every piece. <br> All items are hand made and 100% authentic</p>
+  </div>
+
+  <div class="mainForm">
+    <h1> Welcome </h1>
+    <div class="inputFields">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" [(ngModel)]="name" name="name" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" class="form-control" [(ngModel)]="username" name="username" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="form-control" [(ngModel)]="email" name="email" autocomplete="off">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" [(ngModel)]="password" name="password">
+        </div>
+        <button type="button" class="btn btn-success btn-block" color="accent" routerLink="/register">REGISTER</button>
+    </div>
+
+    
+  </div>
 </div>
+
+<figure>
+  <img src="../../../assets/img/make-your-own-herbarium.jpg" id="firstImage">
+  <figcaption>Ikebana (生け花, 活け花, "arranging flowers" or "making flowers alive") is the Japanese art of flower arrangement.[1][2] It 
+    is also known as Kadō (華道, "way of flowers"). The tradition dates back to the 
+    7th century when floral offerings were made at altars. Later, they were placed in the tokonoma (alcove) of a home.</figcaption>
+</figure>
+
+<figure style="margin-top: 50px;">
+  <img src="../../../assets/img/willing-to-go-into-the-deep-waters.jpg" id="secondImage">
+  <figcaption>Origami (折り紙, Japanese pronunciation: [oɾiɡami] or [oɾiꜜɡami], from ori meaning "folding", and kami meaning 
+    "paper" (kami changes to gami due to rendaku)) is the art of paper folding, which is often associated with Japanese culture.</figcaption>
+</figure>
+
+<button mat-raised-button color="accent" routerLink="/register">REGISTER</button>

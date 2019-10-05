@@ -28,7 +28,7 @@
         <a class="nav-link" routerLink="/cart"><mat-icon matBadge="2" matBadgeColor="warn" class="material-icons">shopping_cart</mat-icon></a>
       </li>
       <li *ngIf="!authService.loggedIn()" class="nav-item">
-          <a class="nav-link" routerLink="/login">Login</a>
+          <a class="nav-link" routerLink="/login">Sign in</a>
       </li>
       <li *ngIf="authService.loggedIn()" class="nav-item">
         <a class="nav-link" (click)="onLogoutClick()" style="cursor: pointer;">Logout</a>
