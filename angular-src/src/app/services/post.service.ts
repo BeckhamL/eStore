@@ -72,4 +72,11 @@ export class PostService {
 
     return this.http.post('http://localhost:3000/posts/store/update?id=' + id, {headers}).pipe(map(res => res.json));
   }
+
+  memeberSelectedItem(id: string, userEmail: string) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post('http://localhost:3000/posts/store/addCart?id=' + id + '&userEmail=' + userEmail, {headers}).pipe(map(res => res.json));
+  }
 }

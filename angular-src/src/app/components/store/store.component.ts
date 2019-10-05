@@ -91,4 +91,12 @@ export class StoreComponent implements OnInit {
      }
    }
 
+   addToFavourites(index: string) {
+
+    let item = this.items[index];
+     this.snackBar.open("Added " + item.itemName + " to your favourites", "Dismiss", {
+       duration: 3000
+     });
+   }
+
 }

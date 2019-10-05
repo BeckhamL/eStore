@@ -1,4 +1,5 @@
 import { Category } from './category';
+import { User } from '../models/user';
 
 export interface Item {
   itemName: string;
@@ -9,4 +10,5 @@ export interface Item {
   itemDescription: string;
   itemCategory: Category;
   itemQuantity: number;
+  itemPurchasedBy: User;
 }

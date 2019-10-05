@@ -1,3 +1,25 @@
 body {
   text-align: center;
 }
+
+.homePage {
+  width: 100%;
+  padding-right: 0px !important; 
+  padding-left: 0px !important;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#image {
+  width: 100% !important;
+}
+
+.mainForm {
+  border-radius: 25px;
+  background: gray;
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  box-shadow: 4px 5px 14px;
+}

@@ -25,6 +25,7 @@ export class NewPostingComponent implements OnInit {
   itemImage: string;
   itemQuantity: number;
   item: Item;
+  defaultUser: User = null;
 
   constructor(
     private validateService: ValidateService,
@@ -46,7 +47,8 @@ export class NewPostingComponent implements OnInit {
       itemDate: new Date(),
       itemCategory: this.itemCategory,
       itemOwner: this.loggedUser.email,
-      itemQuantity: this.itemQuantity
+      itemQuantity: this.itemQuantity,
+      itemPurchasedBy: this.defaultUser
     }
 
     if (!this.validateService.validateNewPost(item)) {
