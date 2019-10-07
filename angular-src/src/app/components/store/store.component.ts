@@ -50,7 +50,9 @@ export class StoreComponent implements OnInit {
 
     this.postService.reduceQuantityOfPost(this.jsonString.substring(8, 32)).subscribe(data => {
       if(data) {
-        this.flashMessages.show("Added to you cart", {cssClass: 'alert-success', timeout: 3000});
+        this.snackBar.open("Successfully added " + this.clickedPost.itemName + " to your cart", "Dismiss", {
+          duration: 3000
+        });
         this.router.navigate(['/store']);
         this.postService.getPosts().subscribe(items => {
           this.items = items;

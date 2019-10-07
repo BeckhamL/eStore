@@ -161,25 +161,4 @@ router.post("/store/update", function(req, res) {
   });
 });
 
-// router.post("/store/addCart", function(req, res) {
-//   let id = req.param('id');
-//   let email = req.param('userEmail');
-
-//   Item.updateOne({"_id" :id, "email": email}, {$set: {"itemQuantity": -1 }}, function(err, item) {
-
-//     if(err) {
-//       res.json({
-//         success: false,
-//         msg: err
-//       })
-//     }
-//     else {
-//       res.json({
-//         success: true,
-//         msg: "Successfully updated"
-//       })
-//     }
-//   });
-// })
-
 module.exports = router;

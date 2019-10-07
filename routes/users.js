@@ -12,7 +12,8 @@ router.post("/register", function(req,res) {
     email: req.body.email,
     username: req.body.username,
     password: req.body.password,
-    userType: req.body.userType
+    userType: req.body.userType,
+    itemsInCart: req.body.itemsInCart
   });
 
   User.addUser(newUser, function(err, user) {
@@ -83,7 +84,8 @@ router.post("/authenticate", function(req,res) {
               name: user.name,
               username: user.username,
               email: user.email,
-              userType: user.userType
+              userType: user.userType,
+              itemsInCart: user.itemsInCart
             }
           })
       }
