@@ -41,7 +41,6 @@ export class DashboardComponent implements OnInit {
   onItemClick(index: number) {
     this.clickedPost = this.items[index];
     this.clickedPostSend.emit(this.clickedPost);
-    const dialogRef = this.dialog.open(EditPostComponent);
   }
 
   removeClickedPost(index: string) {

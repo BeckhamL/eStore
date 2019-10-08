@@ -1,7 +1,7 @@
 import { Category } from './category';
 import { User } from '../models/user';
 
-export interface Item {
+export class Item {
   itemName: string;
   itemImage: string;
   itemCost: number;

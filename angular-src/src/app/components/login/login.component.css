@@ -1,0 +1,21 @@
+.login_container {
+  width: 100%;
+  height: 100%;
+}
+
+.inputFields {
+  text-align: left;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.mainForm {
+  border-radius: 15px;
+  background: #FEF9FF;
+  text-align: center;
+  margin: 0 auto;
+  width: 800px;
+  height: 480px;
+  box-shadow: 4px 5px 14px;
+}

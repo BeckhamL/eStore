@@ -32,7 +32,9 @@ export class LoginComponent implements OnInit {
         email: "",
         password: this.password,
         userType: "Admin",
-        itemsInCart: null
+        itemsInCart: null,
+        itemsInFavourite: null,
+        itemsPurhased: null
       }
     } 
     else {
@@ -42,7 +44,9 @@ export class LoginComponent implements OnInit {
         email: "",
         password: this.password,
         userType: "Member",
-        itemsInCart: null
+        itemsInCart: null,
+        itemsInFavourite: null,
+        itemsPurhased: null
       }
     }
 

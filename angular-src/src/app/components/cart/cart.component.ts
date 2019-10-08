@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Item } from '../../models/item';
+import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,16 +9,24 @@ import { Item } from '../../models/item';
 })
 export class CartComponent implements OnInit {
 
-  @Input() item: Item;
+  user: User;
+  items: string[] = new Array();
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
-  }
 
-  getClickedPost($event: Item) {
-    this.item = $event;
-    console.log(this.item);
+    let userId:string = JSON.stringify(localStorage.getItem('user'));
+
+    this.userService.getUsersCart(userId.substring(11,35)).subscribe(items => {
+      this.items = items.itemsInCart;
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
   }
 
 }

@@ -9,8 +9,7 @@
           <mat-card-subtitle>Date posted: {{ item.itemDate | date: 'MMMM d, yyyy'}} </mat-card-subtitle>
         </mat-card-header>
         <div *ngIf="item.itemImage == null; else null"></div>
-        <!-- <img mat-card-image src={{item.itemImage}}> -->
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"> 
         <mat-card-content>
           <p>
             {{item.itemDescription}}

@@ -12,20 +12,20 @@
     <div class="inputFields">
         <div class="form-group">
           <label>Name</label>
-          <input type="text" class="form-control" [(ngModel)]="name" name="name" autocomplete="off">
+          <input type="text" class="form-control" [(ngModel)]="name" name="name" autocomplete="off" placeholder="Name">
         </div>
         <div class="form-group">
           <label>Username</label>
-          <input type="text" class="form-control" [(ngModel)]="username" name="username" autocomplete="off">
+          <input type="text" class="form-control" [(ngModel)]="username" name="username" autocomplete="off" placeholder="Username">
         </div>
         <div class="form-group">
-          <label>Email</label>
-          <input type="email" class="form-control" [(ngModel)]="email" name="email" autocomplete="off">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="email" name="email" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
         <div class="form-group">
           <label>Password</label>
-          <input type="password" class="form-control" [(ngModel)]="password" name="password">
+          <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Password">
         </div>
         <button type="button" class="btn btn-success btn-block" color="accent" routerLink="/store" (click)="homeRegister()">REGISTER</button>
     </div>
@@ -45,4 +45,4 @@
     "paper" (kami changes to gami due to rendaku)) is the art of paper folding, which is often associated with Japanese culture.</figcaption>
 </figure>
 
-<button mat-raised-button color="accent" routerLink="/register">REGISTER</button>
+<button mat-raised-button color="accent" routerLink="/register">CLICK HERE TO SIGN UP AND VIEW THE STORE</button>

@@ -5,6 +5,7 @@ import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router'; 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Item } from '../../models/item';
  
 @Component({
   selector: 'app-register',
@@ -55,7 +56,9 @@ export class RegisterComponent implements OnInit {
       email: this.email,
       password: this.password,
       userType: "Member",
-      itemsInCart: null
+      itemsInCart: [new Item],
+      itemsInFavourite: [new Item],
+      itemsPurhased: [new Item]
     };
 
     if(!this.validateService.validateRegister(user)) {

@@ -1,12 +1,22 @@
-<form>
-  <div class="form-group">
-    <label>Username</label>
-    <input type="text" class="form-control" [(ngModel)]="username" name="username" autocomplete="off">
+<div class="login_container">
+  <div class="mainForm">
+    <img src="../../../assets/img/icon.png">
+    <h1>Please Sign In</h1>
+    <div class="inputFields">
+      <form>
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" class="form-control" [(ngModel)]="username" name="username" autocomplete="off" placeholder="Username">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Password">
+        </div>
+      </form>
+      <button type="button" class="btn btn-success btn-block" color="accent" (click)="onLoginSubmit()">LOGIN</button>
+    </div>
+    <a routerLink="/">Forgot password?</a>
+    <br>
+    Don't have an account? <a routerLink="/register">Join now</a>
   </div>
-  <div class="form-group">
-    <label>Password</label>
-    <input type="password" class="form-control" [(ngModel)]="password" name="password">
-  </div>
-</form>
-
-<button mat-raised-button color="accent" (click)="onLoginSubmit()">Login</button>
+</div>

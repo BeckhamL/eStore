@@ -4,6 +4,7 @@ const passport = require("passport");
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
+const Item = require("../models/item");
 const config = require("../config/database");
 
 router.post("/register", function(req,res) {
@@ -13,7 +14,9 @@ router.post("/register", function(req,res) {
     username: req.body.username,
     password: req.body.password,
     userType: req.body.userType,
-    itemsInCart: req.body.itemsInCart
+    itemsInCart: req.body.itemsInCart,
+    itemsInFavourite: req.body.itemsInFavourite,
+    itemsPurchased: req.body.itemsPurchased
   });
 
   User.addUser(newUser, function(err, user) {
@@ -85,7 +88,9 @@ router.post("/authenticate", function(req,res) {
               username: user.username,
               email: user.email,
               userType: user.userType,
-              itemsInCart: user.itemsInCart
+              itemsInCart: user.itemsInCart,
+              itemsInFavourite: user.itemsInFavourite,
+              itemsPurchased: user.itemsPurchased
             }
           })
       }
@@ -103,5 +108,83 @@ router.get("/profile", passport.authenticate('jwt', {session: false}), function(
     user: req.user
   });
 });
+
+router.post("/store/addToCart", function(req, res) {
+
+  let id = req.param('id');
+  let item = req.param('item');
+
+  User.updateOne({"_id": id}, {$addToSet: {"itemsInCart": item}}, function(err, item) {
+    if(err) {
+      res.json({
+        success: false,
+        msg: err
+      })
+    }
+    else {
+      res.json({
+        success: true,
+        msg: "Successfully updated"
+      })
+    }
+  });
+});
+
+router.post("/store/addToFavourite", function(req, res) {
+
+  let id = req.param('id');
+  let item = req.param('item');
+
+  User.updateOne({"_id": id}, {$addToSet: {"itemsInFavourite": item}}, function(err, item) {
+    if(err) {
+      res.json({
+        success: false,
+        msg: err
+      })
+    }
+    else {
+      res.json({
+        success: true,
+        msg: "Successfully updated"
+      })
+    }
+  });
+});
+
+router.get("/favourites", function(req, res) {
+
+  let id = req.param('id');
+
+  User.findOne({"_id": id}, {"itemsInFavourite": 1, "_id": 0}, function(err, item) {
+
+    if(err) {
+      res.json({
+        success: false,
+        msg: err
+      })
+    }
+    else {
+      res.json(item)
+    }
+  });
+})
+
+router.get("/cart", function(req, res) {
+
+  let id = req.param('id');
+
+  User.findOne({"_id": id}, {"itemsInCart": 1, "_id": 0}, function(err, item) {
+
+    if(err) {
+      res.json({
+        success: false,
+        msg: err
+      })
+    }
+    else {
+      res.json(item)
+    }
+  });
+})
 
 module.exports = router;

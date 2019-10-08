@@ -8,3 +8,14 @@
     <li> User type: {{ user.userType }} </li>
   </ul>
 </div>
+<mat-tab-group *ngIf='authService.getUser().userType == "Member"'>
+
+  <mat-tab label="Purchase history">
+    No current sales
+  </mat-tab>
+  <mat-tab label="Favourites">
+    <ul *ngFor="let item of items">
+      <li>{{item}}</li>
+    </ul>
+  </mat-tab>
+</mat-tab-group>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Item } from '../../models/item';
 import { Category } from '../../models/category';
 import { User } from 'src/app/models/user';
@@ -6,7 +6,7 @@ import { PostService } from '../../services/post.service';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { MatDialog } from '@angular/material/dialog';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-store',
@@ -15,7 +15,11 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class StoreComponent implements OnInit {
 
+  @ViewChild('favourite', {static: false}) button: ElementRef;
+
   loggedUser: User = JSON.parse(localStorage.getItem("user"));
+  userId:string = JSON.stringify(localStorage.getItem('user'));
+
   categories: Category;
   jsonString: String;
   
@@ -29,7 +33,7 @@ export class StoreComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     private flashMessages: FlashMessagesService,
-    private dialog: MatDialog
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -61,6 +65,15 @@ export class StoreComponent implements OnInit {
       else {
         this.flashMessages.show("Error while deleting post", {cssClass: 'alert-danger', timeout: 3000});
         this.router.navigate(['/store']);
+      }
+    });
+
+    this.userService.addToUsersCart(this.userId.substring(11,35), this.jsonString.substring(8,32)).subscribe(data => {
+      if(data) {
+        console.log("add to cart success");
+      }
+      else {
+        console.log("add to cart error");
       }
     });
    }
@@ -95,10 +108,23 @@ export class StoreComponent implements OnInit {
 
    addToFavourites(index: string) {
 
-    let item = this.items[index];
-     this.snackBar.open("Added " + item.itemName + " to your favourites", "Dismiss", {
-       duration: 3000
-     });
+    (<any>this.button).color = 'warn';
+
+    this.clickedPost = this.items[index];
+    this.jsonString = JSON.stringify(this.clickedPost);
+
+    this.userService.addToUsersFavourite(this.userId.substring(11,35), this.jsonString.substring(8, 32)).subscribe(data => {
+
+      if(data.success) {
+        this.snackBar.open("Added " + this.clickedPost.itemName + " to your favourites", "Dismiss", {
+          duration: 3000
+        });
+      }
+      else {
+        console.log("error");
+      }
+    })
+
    }
 
 }

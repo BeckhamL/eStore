@@ -44,6 +44,7 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
 // Services
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 
 // Misc
 import { FlashMessagesModule } from 'angular2-flash-messages';
@@ -117,7 +118,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [ValidateService, AuthService, AuthGuard, DatePipe],
+  providers: [ValidateService, AuthService, AuthGuard, DatePipe, UserService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

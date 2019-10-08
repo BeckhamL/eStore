@@ -4,6 +4,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router'; 
+import { Item } from '../../models/item';
 
 @Component({
   selector: 'app-home',
@@ -37,16 +38,20 @@ export class HomeComponent implements OnInit {
       email: this.email,
       password: this.password,
       userType: "Member",
-      itemsInCart: null
+      itemsInCart: [new Item],
+      itemsInFavourite: [new Item],
+      itemsPurhased: [new Item]
     };
     
     if(!this.validateService.validateRegister(user)) {
       this.flashMessage.show("Missing fields", {cssClass: 'alert-danger', timeout: 3000});
+      this.router.navigate(["/"]);
       return false;
     }
 
     if(!this.validateService.validateEmail(user.email)) {
       this.flashMessage.show("Invalid email", {cssClass: 'alert-danger', timeout: 3000});
+      this.router.navigate(["/"]);
       return false;
     }
 

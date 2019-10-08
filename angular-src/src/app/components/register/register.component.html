@@ -1,4 +1,4 @@
-<mat-horizontal-stepper [linear]="true" #stepper>
+<mat-vertical-stepper [linear]="true" #stepper cdkFocusInitial>
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Fill out your name</ng-template>
@@ -53,5 +53,5 @@
         <button mat-raised-button color="accent" (click)="onRegisterSubmit()">Register</button>
       </div>
     </mat-step>
-  </mat-horizontal-stepper>
+  </mat-vertical-stepper>
 

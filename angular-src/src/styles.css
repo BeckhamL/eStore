@@ -6,4 +6,12 @@ html, body {
    margin: 0 auto;
    background: #f3f3f3;
 }
-body { margin: 0; font-family: Roboto, "Roboto", sans-serif; }
+
+body { 
+   margin: 0; 
+   font-family: Roboto, "Roboto", sans-serif; 
+}
+
+button { 
+   font-family: Roboto, "Roboto", sans-serif; 
+}
