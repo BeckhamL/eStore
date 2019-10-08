@@ -100,9 +100,13 @@ export class StoreComponent implements OnInit {
      this.items = value;
    }
 
-   checkItemQuantity(index: string) {
+   checkItemQuantity(index: string): boolean {
      if(this.items[index].itemQuantity == 0) {
-       this.removeItemQuantityZero(index);
+       //this.removeItemQuantityZero(index);
+       return true;
+     }
+     else {
+       return false;
      }
    }
 

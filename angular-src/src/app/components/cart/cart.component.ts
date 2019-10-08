@@ -11,7 +11,6 @@ export class CartComponent implements OnInit {
 
   user: User;
   items: string[] = new Array();
-  numOfItems: number;
 
   constructor(
     private userService: UserService
@@ -23,8 +22,6 @@ export class CartComponent implements OnInit {
 
     this.userService.getUsersCart(userId.substring(11,35)).subscribe(items => {
       this.items = items.itemsInCart;
-      this.numOfItems = items.itemsInCart.length;
-      console.log(this.numOfItems);
     },
     err => {
       console.log(err);
@@ -32,4 +29,10 @@ export class CartComponent implements OnInit {
     });
   }
 
+  getItemFromItemID(arr: string[]) {
+
+    for (let i = 0; i < arr.length; i++) {
+      
+    }
+  }
 }

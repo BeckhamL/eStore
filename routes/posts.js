@@ -46,6 +46,23 @@ router.get("/dashboard", function(req, res) {
   });
 });
 
+router.get("/dashboard/id", function(req, res) {
+
+  let id = req.param('id');
+
+  Item.find({"_id": id}, function(err, items) {
+    if(err) {
+      res.json({
+        success: false,
+        msg: err
+      })
+    }
+    else {
+      res.json(items);
+    }
+  });
+});
+
 router.get("/dashboard/search", function(req, res) {
 
   if (req.query.name == undefined) {

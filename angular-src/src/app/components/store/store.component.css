@@ -1,3 +1,11 @@
 #favourite {
   float: right;
 }
+
+#oosImage {
+  opacity: 0.5;
+}
+
+#oosText {
+  color: red;
+}
