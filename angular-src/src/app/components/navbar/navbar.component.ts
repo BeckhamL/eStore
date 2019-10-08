@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,17 +13,24 @@ import { User } from '../../models/user';
 export class NavbarComponent implements OnInit {
 
   user: User;
+  numOfItemsInCart: number;
+  userID = JSON.stringify(localStorage.getItem('user'));
+
   constructor(
     private authService: AuthService,
     private router: Router,
-    private flashMessages: FlashMessagesService
+    private flashMessages: FlashMessagesService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
     if(this.authService.loggedIn()) {
       this.user = JSON.parse(localStorage.getItem("user"));
-      console.log("navbar" + this.user);
     }
+
+    this.userService.getUsersCart(this.userID.substring(11,35)).subscribe(data => {
+      this.numOfItemsInCart = data.itemsInCart.length;
+    });
   }
 
   onLogoutClick() {
