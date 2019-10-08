@@ -3,57 +3,55 @@
   <mat-grid-tile *ngFor="let item of items; let i = index">
     <div *ngIf="checkItemQuantity(i); else inStock">
         <mat-card class="example-card" (click)="onItemClick(i)">
-            <mat-card-header>
-              <mat-card-title id="oosText">{{item.itemName}} - OUT OF STOCK</mat-card-title>
-              <mat-card-title>${{ item.itemCost }}</mat-card-title>
-              <mat-card-subtitle>Category: {{ item.itemCategory }}</mat-card-subtitle>
-              <mat-card-subtitle>Date posted: {{ item.itemDate | date: 'MMMM d, yyyy'}} </mat-card-subtitle>
-            </mat-card-header>
-            <div *ngIf="item.itemImage == null; else null"></div>
-            <!-- <img mat-card-image src={{item.itemImage}}> -->
-            <img mat-card-image id="oosImage" src="https://material.angular.io/assets/img/examples/shiba2.jpg">
-            <mat-card-content>
-              <p>
-                {{item.itemDescription}}
-              </p>
-            </mat-card-content>
-      
-            <mat-card-actions>
-              <button mat-raised-button color="primary" (click)="addToCart(i)" disabled>ADD TO CART</button>
-      
-              <button mat-icon-button title="Add to favourites" (click)="addToFavourites(i)" id="favourite" #favourite>
-                <mat-icon>favorite</mat-icon>
-              </button>
-      
-            </mat-card-actions>
-          </mat-card>
+          <mat-card-header>
+            <mat-card-title id="oosText">{{item.itemName}} - OUT OF STOCK</mat-card-title>
+            <mat-card-title>${{ item.itemCost }}</mat-card-title>
+            <mat-card-subtitle>Category: {{ item.itemCategory }}</mat-card-subtitle>
+            <mat-card-subtitle>Date posted: {{ item.itemDate | date: 'MMMM d, yyyy'}} </mat-card-subtitle>
+          </mat-card-header>
+          <div *ngIf="item.itemImage == null; else null"></div>
+          <!-- <img mat-card-image src={{item.itemImage}}> -->
+          <img mat-card-image id="oosImage" src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+          <mat-card-content>
+            <p>
+              {{item.itemDescription}}
+            </p>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="addToCart(i)" disabled>ADD TO CART</button>
+            <button mat-icon-button title="Add to favourites" (click)="addToFavourites(i)" id="favourite" #favourite>
+              <mat-icon>favorite</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
     </div>
     <ng-template #inStock>
-        <mat-card class="example-card" (click)="onItemClick(i)">
-            <mat-card-header>
-              <mat-card-title>{{ item.itemName }}</mat-card-title>
-              <mat-card-title>${{ item.itemCost }} - {{ item.itemQuantity }} left in stock</mat-card-title>
-              <mat-card-subtitle>Category: {{ item.itemCategory }}</mat-card-subtitle>
-              <mat-card-subtitle>Date posted: {{ item.itemDate | date: 'MMMM d, yyyy'}} </mat-card-subtitle>
-            </mat-card-header>
-            <div *ngIf="item.itemImage == null; else null"></div>
-            <!-- <img mat-card-image src={{item.itemImage}}> -->
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
-            <mat-card-content>
-              <p>
-                {{item.itemDescription}}
-              </p>
-            </mat-card-content>
-      
-            <mat-card-actions>
-              <button mat-raised-button color="primary" (click)="addToCart(i)">ADD TO CART</button>
-      
-              <button mat-icon-button title="Add to favourites" (click)="addToFavourites(i)" id="favourite" #favourite>
-                <mat-icon>favorite</mat-icon>
-              </button>
-      
-            </mat-card-actions>
-          </mat-card>
+      <mat-card class="example-card" (click)="onItemClick(i)">
+        <mat-card-header>
+          <mat-card-title>{{ item.itemName }}</mat-card-title>
+          <mat-card-title>${{ item.itemCost }} - {{ item.itemQuantity }} left in stock</mat-card-title>
+          <mat-card-subtitle>Category: {{ item.itemCategory }}</mat-card-subtitle>
+          <mat-card-subtitle>Date posted: {{ item.itemDate | date: 'MMMM d, yyyy'}} </mat-card-subtitle>
+        </mat-card-header>
+        <div *ngIf="item.itemImage == null; else null"></div>
+        <!-- <img mat-card-image src={{item.itemImage}}> -->
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+        <mat-card-content>
+          <p>
+            {{item.itemDescription}}
+          </p>
+        </mat-card-content>
+  
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="addToCart(i)">ADD TO CART</button>
+  
+          <button mat-icon-button title="Add to favourites" (click)="addToFavourites(i)" id="favourite" #favourite>
+            <mat-icon>favorite</mat-icon>
+          </button>
+  
+        </mat-card-actions>
+      </mat-card>
     </ng-template>
   </mat-grid-tile>
 </mat-grid-list>

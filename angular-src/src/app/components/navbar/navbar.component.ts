@@ -28,9 +28,7 @@ export class NavbarComponent implements OnInit {
       this.user = JSON.parse(localStorage.getItem("user"));
     }
 
-    this.userService.getUsersCart(this.userID.substring(11,35)).subscribe(data => {
-      this.numOfItemsInCart = data.itemsInCart.length;
-    });
+    this.userService.getUsersCart(this.userID.substring(11,35)).subscribe(data => this.numOfItemsInCart = data.itemsInCart.length);
   }
 
   onLogoutClick() {

@@ -56,6 +56,7 @@ import { DatePipe } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { StoreComponent } from './components/store/store.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CartItemsComponent } from './components/cart-items/cart-items.component';
 
 const appRoutes: Routes = [
   {path:"", component: HomeComponent},
@@ -85,7 +86,8 @@ const appRoutes: Routes = [
     AnalyticsComponent,
     FooterComponent,
     StoreComponent,
-    CartComponent
+    CartComponent,
+    CartItemsComponent
   ],
   imports: [
     HttpModule,

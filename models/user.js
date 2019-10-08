@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
-const config = require("../config/database");
-const Item = require("./item");
 
 const UserSchema = mongoose.Schema({
   name: {type: String},
@@ -9,9 +7,9 @@ const UserSchema = mongoose.Schema({
   username: {type: String, required: true},
   password: {type:String, required: true},
   userType: {type:String, required: true},
-  itemsInCart: {type: Array, Item: []},
-  itemsInFavourite: {type: Array, Item: []},
-  itemsPurchased: {type: Array, Item: []}
+  itemsInCart: {type: Array, String: []},
+  itemsInFavourite: {type: Array, String: []},
+  itemsPurchased: {type: Array, String: []}
 });
 
 const User = module.exports = mongoose.model("User", UserSchema);

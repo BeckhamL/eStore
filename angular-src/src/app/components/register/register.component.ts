@@ -50,16 +50,30 @@ export class RegisterComponent implements OnInit {
 
     let user: User;
 
-    user = {
-      name: this.name,
-      username: this.username,
-      email: this.email,
-      password: this.password,
-      userType: "Member",
-      itemsInCart: [new Item],
-      itemsInFavourite: [new Item],
-      itemsPurhased: [new Item]
-    };
+    if(this.username == "admin" || this.username == "Admin") {
+      user = {
+        name: this.name,
+        username: this.username,
+        email: this.email,
+        password: this.password,
+        userType: "Admin",
+        itemsInCart: new Array<string>(),
+        itemsInFavourite: new Array<string>(),
+        itemsPurhased: new Array<string>()
+      };
+    }
+    else {
+      user = {
+        name: this.name,
+        username: this.username,
+        email: this.email,
+        password: this.password,
+        userType: "Member",
+        itemsInCart: new Array<string>(),
+        itemsInFavourite: new Array<string>(),
+        itemsPurhased: new Array<string>()
+      };
+    }
 
     if(!this.validateService.validateRegister(user)) {
       this.flashMessage.show("Missing fields", {cssClass: 'alert-danger', timeout: 3000});

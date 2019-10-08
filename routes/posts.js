@@ -46,7 +46,7 @@ router.get("/dashboard", function(req, res) {
   });
 });
 
-router.get("/dashboard/id", function(req, res) {
+router.get("/dashboard/itemID", function(req, res) {
 
   let id = req.param('id');
 

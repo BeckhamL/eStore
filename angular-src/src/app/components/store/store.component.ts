@@ -7,8 +7,10 @@ import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { UserService } from '../../services/user.service';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
+  providers: [NavbarComponent],
   selector: 'app-store',
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.css']
@@ -33,7 +35,8 @@ export class StoreComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     private flashMessages: FlashMessagesService,
-    private userService: UserService
+    private userService: UserService,
+    private navComponent: NavbarComponent
   ) { }
 
   ngOnInit() {
@@ -54,6 +57,7 @@ export class StoreComponent implements OnInit {
 
     this.postService.reduceQuantityOfPost(this.jsonString.substring(8, 32)).subscribe(data => {
       if(data) {
+        this.navComponent.ngOnInit();
         this.snackBar.open("Successfully added " + this.clickedPost.itemName + " to your cart", "Dismiss", {
           duration: 3000
         });
@@ -102,7 +106,6 @@ export class StoreComponent implements OnInit {
 
    checkItemQuantity(index: string): boolean {
      if(this.items[index].itemQuantity == 0) {
-       //this.removeItemQuantityZero(index);
        return true;
      }
      else {

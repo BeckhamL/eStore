@@ -6,7 +6,7 @@ const userM = {
   username: {type: String, required: true},
   password: {type:String, required: true},
   userType: {type:String, required: true},
-  itemsInCart: {type: Array, Item: []},
-  itemsInFavourite: {type: Array, Item: []},
-  itemsPurchased: {type: Array, Item: []}
+  itemsInCart: {type: Array, String: []},
+  itemsInFavourite: {type: Array, String: []},
+  itemsPurchased: {type: Array, String: []}
 }

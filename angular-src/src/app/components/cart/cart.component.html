@@ -1,5 +1,2 @@
 <h1>Items in your cart</h1>
-
-<ul *ngFor="let item of items">
-  <li>{{item}}</li>
-</ul>
+<app-cart-items [cartItems]="items"></app-cart-items>

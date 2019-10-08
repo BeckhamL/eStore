@@ -11,7 +11,7 @@
 <mat-tab-group *ngIf='authService.getUser().userType == "Member"'>
 
   <mat-tab label="Purchase history">
-    No current sales
+    No previous purchases
   </mat-tab>
   <mat-tab label="Favourites">
     <ul *ngFor="let item of items">

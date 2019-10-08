@@ -34,6 +34,14 @@ export class PostService {
     return this.http.delete('http://localhost:3000/posts/dashboard?id=' + id, {headers});
   }
 
+  getPostById(id: string) {
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this.http.get('http://localhost:3000/posts/dashboard/itemID?id=' + id, {headers}).pipe(map(res => res.json()));
+  }
+
   searchPosting(name: string) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');

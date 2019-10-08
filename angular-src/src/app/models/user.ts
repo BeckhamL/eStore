@@ -6,7 +6,7 @@ export interface User {
   email: string,
   password: string,
   userType: string,
-  itemsInCart: Item[],
-  itemsInFavourite: Item[],
-  itemsPurhased: Item[]
+  itemsInCart: string[],
+  itemsInFavourite: string[],
+  itemsPurhased: string[]
 }
