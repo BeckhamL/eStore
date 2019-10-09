@@ -1,0 +1,24 @@
+<mat-grid-list cols="3" rowHeight="548px" gutterSize="10px">
+  <mat-grid-tile *ngFor="let item of favouriteItems; let i = index">
+    <mat-card class="example-card" (click)="onItemClick(i)">
+        <mat-card-header>
+          <mat-card-title>{{ item.itemName }}</mat-card-title>
+          <mat-card-title>${{ item.itemCost }}</mat-card-title>
+          <mat-card-subtitle>Category: {{ item.itemCategory }}</mat-card-subtitle>
+          <mat-card-subtitle>Date posted: {{ item.itemDate | date: 'MMMM d, yyyy'}} </mat-card-subtitle>
+        </mat-card-header>
+        <div *ngIf="item.itemImage == null; else null"></div>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"> 
+        <mat-card-content>
+          <p>
+            {{item.itemDescription}}
+          </p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button type="button" class="btn btn-success">ADD TO CART</button>
+          <button type="button" class="btn btn-danger" (click)="removeFromCart(i)">REMOVE</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

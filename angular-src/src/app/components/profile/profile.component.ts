@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { Item } from '../../models/item';
 import { UserService } from '../../services/user.service';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,12 +13,13 @@ import { UserService } from '../../services/user.service';
 export class ProfileComponent implements OnInit {
 
   user: User;
-  items: string[] = new Array();
+  itemIDs: string[] = new Array();
+  items: Item[];
 
   constructor(
     private authService: AuthService,
-    private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private postService: PostService
     ) { }
 
   ngOnInit() {
@@ -33,13 +34,25 @@ export class ProfileComponent implements OnInit {
     let userId:string = JSON.stringify(localStorage.getItem('user'));
 
     this.userService.getUsersFavourite(userId.substring(11,35)).subscribe(items => {
-      this.items = items.itemsInFavourite;
+      this.itemIDs = items.itemsInFavourite;
+      this.items = new Array(this.itemIDs.length);
+      this.getItemFromItemID(this.itemIDs);
     },
     err => {
       console.log(err);
       return false;
     });
 
+  }
+
+  getItemFromItemID(arr: string[]) {
+
+    for (let i = 0; i < arr.length; i++) {
+      this.postService.getPostById(arr[i]).subscribe(data => {
+        let curItem = data[0];
+        this.items[i] = curItem;
+      });
+    }
   }
 
 }
