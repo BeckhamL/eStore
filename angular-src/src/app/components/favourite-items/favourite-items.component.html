@@ -16,8 +16,8 @@
         </mat-card-content>
 
         <mat-card-actions>
-          <button type="button" class="btn btn-success">ADD TO CART</button>
-          <button type="button" class="btn btn-danger" (click)="removeFromCart(i)">REMOVE</button>
+          <button mat-raised-button color="primary">ADD</button>
+          <button mat-raised-button color="warn" (click)="removeFromFavourites(i)">REMOVE</button>
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>
