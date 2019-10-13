@@ -10,24 +10,27 @@
   <div class="mainForm">
     <h1> Welcome </h1>
     <div class="inputFields">
-        <div class="form-group">
-          <label>Name</label>
-          <input type="text" class="form-control" [(ngModel)]="name" name="name" autocomplete="off" placeholder="Name">
-        </div>
-        <div class="form-group">
-          <label>Username</label>
-          <input type="text" class="form-control" [(ngModel)]="username" name="username" autocomplete="off" placeholder="Username">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="email" name="email" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <form [formGroup]="homeForm" (ngSumit)="homeRegister()">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" formControlName="name" autocomplete="off" placeholder="Name">
           </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Password">
-        </div>
-        <button type="button" class="btn btn-success btn-block" color="accent" routerLink="/store" (click)="homeRegister()">REGISTER</button>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" formControlName="username" autocomplete="off" placeholder="Username">
+          </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="Password">
+          </div>
+          <button type="button" class="btn btn-success btn-block" color="accent" (click)="homeRegister()">REGISTER</button>
+      </form>
+        
     </div>
   </div>
 </div>

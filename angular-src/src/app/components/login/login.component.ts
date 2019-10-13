@@ -3,6 +3,7 @@ import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +11,6 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  username: string;
-  password: string;
 
   constructor(
     private authService: AuthService,
@@ -22,15 +20,20 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  loginForm: FormGroup = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl('')
+  });
+
   onLoginSubmit() {
 
-    let user: User;
-    if(this.username == 'admin' || this.username == 'Admin') {
+    let user: User = this.loginForm.value;
+    if(user.username == 'admin' || user.username == 'Admin') {
         user = {
         name: "",
-        username: this.username,
+        username: user.username,
         email: "",
-        password: this.password,
+        password: user.password,
         userType: "Admin",
         itemsInCart: null,
         itemsInFavourite: null,
@@ -40,9 +43,9 @@ export class LoginComponent implements OnInit {
     else {
         user = {
         name: "",
-        username: this.username,
+        username: user.username,
         email: "",
-        password: this.password,
+        password: user.password,
         userType: "Member",
         itemsInCart: null,
         itemsInFavourite: null,

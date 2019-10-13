@@ -4,7 +4,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router'; 
-import { Item } from '../../models/item';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -12,11 +12,6 @@ import { Item } from '../../models/item';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  name: string;
-  username: string;
-  email: string;
-  password: string;
 
   constructor(
     private validateService: ValidateService,
@@ -28,16 +23,24 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  homeForm: FormGroup = new FormGroup({
+    name: new FormControl('', Validators.required),
+    username: new FormControl('', Validators.required),
+    email: new FormControl(''),
+    password: new FormControl('', Validators.required)
+  })
+
   homeRegister() {
 
-    let user: User;
+    console.log(this.homeForm.value);
+    let user: User = this.homeForm.value;
 
-    if(this.username == "admin" || this.username == "Admin") {
+    if(user.username == "admin" || user.username == "Admin") {
       user = {
-        name: this.name,
-        username: this.username,
-        email: this.email,
-        password: this.password,
+        name: user.name,
+        username: user.username,
+        email: user.email,
+        password: user.password,
         userType: "Admin",
         itemsInCart: new Array<string>(),
         itemsInFavourite: new Array<string>(),
@@ -46,10 +49,10 @@ export class HomeComponent implements OnInit {
     }
     else {
       user = {
-        name: this.name,
-        username: this.username,
-        email: this.email,
-        password: this.password,
+        name: user.name,
+        username: user.username,
+        email: user.email,
+        password: user.password,
         userType: "Member",
         itemsInCart: new Array<string>(),
         itemsInFavourite: new Array<string>(),
