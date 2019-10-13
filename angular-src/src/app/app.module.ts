@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes} from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { 
   MatToolbarModule, 
@@ -62,20 +61,6 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 // Guards
 import { AuthGuard } from './guards/auth.guard';
 
-
-const appRoutes: Routes = [
-  {path:"", component: HomeComponent},
-  {path:"register", component: RegisterComponent},
-  {path:"login", component: LoginComponent},
-  {path:"dashboard", component: DashboardComponent, canActivate: [AuthGuard]},
-  {path:"profile", component: ProfileComponent, canActivate: [AuthGuard]},
-  {path:"newPosting", component: NewPostingComponent, canActivate: [AuthGuard]},
-  {path:"editPost", component: EditPostComponent, canActivate: [AuthGuard]},
-  {path:"analytics", component: AnalyticsComponent, canActivate: [AuthGuard]},
-  {path:"store", component: StoreComponent},
-  {path:"cart", component: CartComponent, canActivate: [AuthGuard]}
-];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,7 +86,6 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes),
     MatToolbarModule,
     MatMenuModule,
     MatGridListModule,
