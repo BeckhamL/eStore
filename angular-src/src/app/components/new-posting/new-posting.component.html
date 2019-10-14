@@ -1,21 +1,21 @@
 <h1>Publish a new item on your store!</h1>
-<form style="margin-top:30px;"> 
+<form style="margin-top:30px;" [formGroup]="newPostingForm" (ngSubmit)="createPosting()"> 
     <div class="form-group">
         <label>Item name:</label>
-        <input type="text" class="form-control" autocomplete="off" [(ngModel)]="itemName" name="itemName">
+        <input type="text" class="form-control" autocomplete="off" formControlName="itemName">
     </div>
     <div class="form-group">
         <label>Price:</label>
-        <input type="number" class="form-control" autocomplete="off" [(ngModel)]="itemCost" name="itemCost">
+        <input type="number" class="form-control" autocomplete="off" formControlName="itemCost">
     </div>
     <div class="form-group">
       <label>Description:</label>
-      <textarea class="form-control" autocomplete="off" rows="2" maxlength="20" [(ngModel)]="itemDescription" name="itemDescription"></textarea>
+      <textarea class="form-control" autocomplete="off" rows="2" maxlength="20" formControlName="itemDescription"></textarea>
     </div>
 
     <div class="form-group">
       <label>Select a category:</label>
-      <select class="custom-select" [(ngModel)]="itemCategory" name="itemCategory">
+      <select class="custom-select" formControlName="itemCategory">
         <option disabled selected>Choose a category</option>
         <option *ngFor="let key of keys(enumCategories)">{{key}}</option>
       </select>
@@ -23,7 +23,7 @@
 
     <div class="form-group">
       <label>Quantity of items:</label>
-      <select class="custom-select" [(ngModel)]="itemQuantity" name="itemQuantity">
+      <select class="custom-select" formControlName="itemQuantity">
         <option selected>1</option>
         <option>2</option>
         <option>3</option>
@@ -35,7 +35,7 @@
     <div class="form-group">
       <label>Upload an image</label>
       <div class="custom-file">
-        <input type="file" class="custom-file-input" id="customFile" [(ngModel)]="itemImage" name="itemImage">
+        <input type="file" class="custom-file-input" id="customFile" formControlName="itemImage">
         <label class="custom-file-label" for="customFile">Browse</label>
       </div>
     </div>

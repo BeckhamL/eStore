@@ -13,6 +13,8 @@ import { CartComponent } from './components/cart/cart.component';
 
 import { AuthGuard } from '../app/guards/auth.guard';
 
+import { StoreResolverService } from './resolves/store-resolver.service';
+
 const appRoutes: Routes = [
   {path:"", component: HomeComponent},
   {path:"register", component: RegisterComponent},
@@ -22,7 +24,7 @@ const appRoutes: Routes = [
   {path:"newPosting", component: NewPostingComponent, canActivate: [AuthGuard]},
   {path:"editPost", component: EditPostComponent, canActivate: [AuthGuard]},
   {path:"analytics", component: AnalyticsComponent, canActivate: [AuthGuard]},
-  {path:"store", component: StoreComponent},
+  {path:"store", component: StoreComponent, resolve: { data: StoreResolverService}},
   {path:"cart", component: CartComponent, canActivate: [AuthGuard]}
 ];
 

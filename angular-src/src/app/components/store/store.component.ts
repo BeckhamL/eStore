@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { UserService } from '../../services/user.service';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   providers: [NavbarComponent],
@@ -36,13 +37,14 @@ export class StoreComponent implements OnInit {
     private router: Router,
     private flashMessages: FlashMessagesService,
     private userService: UserService,
-    private navComponent: NavbarComponent
+    private navComponent: NavbarComponent,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.postService.getPosts().subscribe(items => {
-      this.items = items;
-    });
+    this.route.data.subscribe(data => {
+      this.items = data.data;
+    })
   }
 
   onItemClick(index: number) {

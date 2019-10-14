@@ -52,8 +52,8 @@ import { SearchFilterComponent } from './components/search-filter/search-filter.
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
-import { PaymentService } from './services/payment.service';
 import { PostService } from './services/post.service';
+import { StoreResolverService } from './resolves/store-resolver.service';
 
 // Misc
 import { FlashMessagesModule } from 'angular2-flash-messages';
@@ -111,7 +111,7 @@ import { AuthGuard } from './guards/auth.guard';
     BrowserAnimationsModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [ValidateService, AuthService, AuthGuard, DatePipe, UserService, PaymentService, PostService],
+  providers: [ValidateService, AuthService, AuthGuard, DatePipe, UserService, PostService, StoreResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

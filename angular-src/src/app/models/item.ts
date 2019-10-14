@@ -11,4 +11,8 @@ export class Item {
   itemCategory: Category;
   itemQuantity: number;
   itemPurchasedBy: User;
+
+  setDate(): void {
+    this.itemDate = new Date();
+  }
 }

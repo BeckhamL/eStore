@@ -6,6 +6,7 @@ import { ValidateService } from '../../services/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 import { PostService } from '../../services/post.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-new-posting',
@@ -18,14 +19,17 @@ export class NewPostingComponent implements OnInit {
   keys = Object.keys;
 
   loggedUser: User = JSON.parse(localStorage.getItem("user"));
-  itemCategory: Category;
-  itemName: string;
-  itemCost: number;
-  itemDescription: string;
-  itemImage: string;
-  itemQuantity: number;
   item: Item;
   defaultUser: User = null;
+
+  newPostingForm: FormGroup = new FormGroup({
+    itemName: new FormControl(''),
+    itemCost: new FormControl(''),
+    itemDescription: new FormControl(''),
+    itemCategory: new FormControl(''),
+    itemQuantity: new FormControl(''),
+    itemImage: new FormControl('')
+  })
 
   constructor(
     private validateService: ValidateService,
@@ -39,17 +43,10 @@ export class NewPostingComponent implements OnInit {
 
   createPosting() {
 
-    const item: Item = {
-      itemName: this.itemName,
-      itemCost: this.itemCost,
-      itemDescription: this.itemDescription,
-      itemImage: this.itemImage,
-      itemDate: new Date(),
-      itemCategory: this.itemCategory,
-      itemOwner: this.loggedUser.email,
-      itemQuantity: this.itemQuantity,
-      itemPurchasedBy: this.defaultUser
-    }
+    let item: Item = this.newPostingForm.value;
+    item.setDate;
+
+    console.log(item);
 
     if (!this.validateService.validateNewPost(item)) {
       this.flashMessages.show("Missing fields", {cssClass: 'alert-danger', timeout: 3000});
