@@ -46,8 +46,6 @@ export class NewPostingComponent implements OnInit {
     let item: Item = this.newPostingForm.value;
     item.setDate;
 
-    console.log(item);
-
     if (!this.validateService.validateNewPost(item)) {
       this.flashMessages.show("Missing fields", {cssClass: 'alert-danger', timeout: 3000});
       this.router.navigate(["/newPosting"]);

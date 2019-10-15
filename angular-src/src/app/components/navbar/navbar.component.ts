@@ -25,10 +25,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     if(this.authService.loggedIn()) {
-      this.user = JSON.parse(localStorage.getItem("user"));
+      this.user = this.authService.getUser();
+      this.userService.getUsersCart(this.userID.substring(11,35)).subscribe(data => this.numOfItemsInCart = data.itemsInCart.length);
     }
-
-    this.userService.getUsersCart(this.userID.substring(11,35)).subscribe(data => this.numOfItemsInCart = data.itemsInCart.length);
   }
 
   onLogoutClick() {
@@ -36,5 +35,20 @@ export class NavbarComponent implements OnInit {
     this.flashMessages.show('Logout successful', {cssClass: 'alert-success', timeout: 3000});
     this.router.navigate(["/login"]);
     return false;
+  }
+
+  logoClick() {
+    
+    //console.log(this.user.userType);
+    console.log(this.authService.loggedIn());
+    if(!this.authService.loggedIn()) {
+      this.router.navigate(['/']);
+    }
+    else if (this.user.userType == "Member") {
+      this.router.navigate(['/store']);
+    }
+    else if (this.user.userType == "Admin") {
+      this.router.navigate(['/dashboard']);
+    }
   }
 }
