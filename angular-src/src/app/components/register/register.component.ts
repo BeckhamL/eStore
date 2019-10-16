@@ -1,23 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ValidateService } from '../../services/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router'; 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Item } from '../../models/item';
- 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements AfterViewInit {
 
   name: string;
   username: string;
   email: string;
   password: string;
+
+  targetInput = 'input0';
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -44,6 +45,28 @@ export class RegisterComponent implements OnInit {
     this.fourthFormGroup = this._formBuilder.group({
       fourthCtrl: ['', Validators.required]
     });
+  }
+
+  ngAfterViewInit() {
+    this.setFocus();
+  }
+
+  setFocus() {
+    let targetElem = document.getElementById(this.targetInput);
+    setTimeout(function waitTargetElem() {
+      if (document.body.contains(targetElem)) {
+        targetElem.focus();
+      }
+      else {
+        setTimeout(waitTargetElem, 100);
+      }
+    }, 100);
+  }
+
+  onChange(event: any) {
+    let index = String(event.selectedIndex);
+    this.targetInput = 'input' + index;
+    this.setFocus();
   }
 
   onRegisterSubmit() {
