@@ -47,6 +47,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { CartItemsComponent } from './components/cart-items/cart-items.component';
 import { FavouriteItemsComponent } from './components/favourite-items/favourite-items.component';
 import { SearchFilterComponent } from './components/search-filter/search-filter.component';
+import { TermsComponent } from './components/terms/terms.component';
 
 // Services
 import { ValidateService } from './services/validate.service';
@@ -78,7 +79,8 @@ import { AuthGuard } from './guards/auth.guard';
     StoreComponent,
     CartComponent,
     CartItemsComponent,
-    FavouriteItemsComponent
+    FavouriteItemsComponent,
+    TermsComponent
   ],
   imports: [
     HttpModule,

@@ -63,4 +63,9 @@ export class NewPostingComponent implements OnInit {
     });
   }
 
+  onFileChanged(event) {
+    let file = event.target.files[0];
+    console.log(file);
+  }
+
 }

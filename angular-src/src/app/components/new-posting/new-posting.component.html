@@ -35,7 +35,7 @@
     <div class="form-group">
       <label>Upload an image</label>
       <div class="custom-file">
-        <input type="file" class="custom-file-input" id="customFile" formControlName="itemImage">
+        <input type="file" class="custom-file-input" id="customFile" formControlName="itemImage" (change)="onFileChanged($event)">
         <label class="custom-file-label" for="customFile">Browse</label>
       </div>
     </div>

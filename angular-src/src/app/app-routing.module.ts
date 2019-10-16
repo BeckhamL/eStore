@@ -10,6 +10,7 @@ import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { StoreComponent } from './components/store/store.component';
 import { CartComponent } from './components/cart/cart.component';
+import { TermsComponent } from './components/terms/terms.component';
 
 // Guards
 import { AuthGuard } from '../app/guards/auth.guard';
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
   {path:"editPost", component: EditPostComponent, canActivate: [AuthGuard]},
   {path:"analytics", component: AnalyticsComponent, canActivate: [AuthGuard]},
   {path:"store", component: StoreComponent, resolve: { data: StoreResolverService}},
-  {path:"cart", component: CartComponent, canActivate: [AuthGuard]}
+  {path:"cart", component: CartComponent, canActivate: [AuthGuard]},
+  {path:"terms", component: TermsComponent}
 ];
 
 @NgModule({
