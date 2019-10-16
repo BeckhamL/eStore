@@ -11,16 +11,19 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { StoreComponent } from './components/store/store.component';
 import { CartComponent } from './components/cart/cart.component';
 
+// Guards
 import { AuthGuard } from '../app/guards/auth.guard';
 
+// Resolves
 import { StoreResolverService } from './resolves/store-resolver.service';
+import { MemberFavouritesService } from './resolves/member-favourites.service';
 
 const appRoutes: Routes = [
   {path:"", component: HomeComponent},
   {path:"register", component: RegisterComponent},
   {path:"login", component: LoginComponent},
   {path:"dashboard", component: DashboardComponent, canActivate: [AuthGuard]},
-  {path:"profile", component: ProfileComponent, canActivate: [AuthGuard]},
+  {path:"profile", component: ProfileComponent, canActivate: [AuthGuard], resolve: { data: MemberFavouritesService}},
   {path:"newPosting", component: NewPostingComponent, canActivate: [AuthGuard]},
   {path:"editPost", component: EditPostComponent, canActivate: [AuthGuard]},
   {path:"analytics", component: AnalyticsComponent, canActivate: [AuthGuard]},

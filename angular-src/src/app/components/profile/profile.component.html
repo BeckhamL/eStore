@@ -115,7 +115,9 @@
                   <p>No recent purchases</p>
                 </div>
                 <div class="tab-pane" id="favourites">
-                  <app-favourite-items [favouriteItems]="items"></app-favourite-items>
+                    <div *ngIf="items">
+                        <app-favourite-items [favouriteItems]="items"></app-favourite-items>
+                    </div>
                 </div>
             </div>
         </div>
